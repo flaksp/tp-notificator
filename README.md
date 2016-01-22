@@ -1,7 +1,7 @@
 # TP Notificator
 You can install it at [Chrome store](https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk).
 
-Someone asked me to release extension on the GitHub so I did it. I've hever thought I will show its sources so be wary of shitty code.
+Someone asked me to release extension on the GitHub so I did it. I've never thought I will show its sources so be wary of shitty code.
 
 Used stuff:
 * jQuery 2.1.4
