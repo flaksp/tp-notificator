@@ -12,7 +12,8 @@ https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk
 * Reduced size of the extension.
 
 ## 1.1.2.0 - January 15, 2016
-* Fixed a bug with the algorithm switcher.* Added a volume regulation.
+* Fixed a bug with the algorithm switcher.
+* Added a volume regulation.
 
 ## 1.1.1.0 - January 12, 2016
 * Fixed localization issues from previous version.
@@ -23,7 +24,8 @@ https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk
 * Added the "Track all" and "Untrack all" buttons.
 * Added difference between your and cheapest seller's price (or most expensive buyer's price).
 * Added the time elapsed since the item listing was updated last time.
-* Added transaction history pages.* Extension errors are logging now. If something goes wrong check out the debug page and send me this information.
+* Added transaction history pages.
+* Extension errors are logging now. If something goes wrong check out the debug page and send me this information.
 * Fixed a problem when the extension worked incorrectly if you are selling or buying more than 200 items simultaneously.
 * Optimization improvements.
 * UI improvements.
