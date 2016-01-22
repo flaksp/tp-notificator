@@ -1,6 +1,8 @@
 # TP Notificator
 https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk
 
+> Someone asked me to release extension on the GitHub so I did it. I've hever thought I will show its sources so be wary of shitty code.
+
 ## 1.1.3.1 - January 22, 2016
 * Minor fixes. 
 
