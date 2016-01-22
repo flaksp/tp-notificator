@@ -1,7 +1,7 @@
 # Guild Wars 2 Trading Post Notificator
-You can install it at [Chrome store](https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk).
+You can get it at [Chrome store](https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk) now.
 
-Someone asked me to release extension on the GitHub so I did it. I've never thought I will show its sources so be wary of shitty code.
+Someone asked me to release extension on GitHub and I did so. I've never thought I will show its sources though, hope you'll be okay with my shitty code.
 
 Used stuff:
 * jQuery 2.1.4
