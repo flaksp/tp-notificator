@@ -1,2 +1,2 @@
-# tp-notificator
-chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk
+# TP Notificator
+https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk
