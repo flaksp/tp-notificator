@@ -3,6 +3,12 @@ You can install it at [Chrome store](https://chrome.google.com/webstore/detail/f
 
 Someone asked me to release extension on the GitHub so I did it. I've hever thought I will show its sources so be wary of shitty code.
 
+Used stuff:
+* jQuery 2.1.4
+* Bootstrap 4.0.0 alpha 2
+* Handlebars 4.0.5 - templare
+* Font Awesome 4.5.0
+
 ---
 
 ## 1.1.3.1 - January 22, 2016
