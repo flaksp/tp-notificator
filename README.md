@@ -6,7 +6,7 @@ Someone asked me to release extension on the GitHub so I did it. I've hever thou
 Used stuff:
 * jQuery 2.1.4
 * Bootstrap 4.0.0 alpha 2
-* Handlebars 4.0.5 - templare
+* Handlebars 4.0.5
 * Font Awesome 4.5.0
 
 ---
