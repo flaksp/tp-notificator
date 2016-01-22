@@ -512,6 +512,6 @@
 		"message": "Why do I receive notifications even when Chrome is off?"
 	},
 	"faq_question_bg_notifications": {
-		"message": "You should disable setting which allows background apps run even Chrome is off. Open Chrome settings <code>chrome://settings/</code>, scroll down and click \"Show advanced settings...\", scroll down and uncheck \"Continue running background apps when Google Chrome is closed\" checkbox."
+		"message": "If you don't want to receive any notifications while the browser is off, you should disable the option which allows background apps run when Google Chrome is closed. Open Chrome settings <code>chrome://settings/</code>, scroll down and click \"Show advanced settings...\", scroll down and uncheck \"Continue running background apps when Google Chrome is closed\" checkbox."
 	}
 }
