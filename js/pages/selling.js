@@ -37,7 +37,7 @@ $("document").ready(function() {
 					var item_ids = [];
 
 					data.forEach(function(item, i, arr) {
-						if (sync_storage['settings'] && sync_storage['settings']['graph_tool']) {
+						if (sync_storage['settings']['graph_tool'] > 0) {
 							var graph_tool_url = create_graph_url(item['item_id'], sync_storage['settings']['graph_tool']);
 						}
 						
@@ -55,7 +55,7 @@ $("document").ready(function() {
 							+ '</div>'
 						+ '</div>'
 						+ '<div class="col-xs-1 text-xs-center">'
-							+ '<div class="cursor-pointer track-this-item' + (local_storage['selling_track_list'] && local_storage['selling_track_list'][item['id']] ? ' text-info' : '') + '" data-item-id="' + item['id'] + '" data-item-vnum="' + item['item_id'] + '" data-item-count="' + item['quantity'] + '" data-item-price="' + item['price'] + '" title="' + chrome.i18n.getMessage("notify_when_sold") + '">'
+							+ '<div class="cursor-pointer track-this-item' + (typeof local_storage['selling_track_list'][item['id']] !== "undefined" ? ' text-info' : '') + '" data-item-id="' + item['id'] + '" data-item-vnum="' + item['item_id'] + '" data-item-count="' + item['quantity'] + '" data-item-price="' + item['price'] + '" title="' + chrome.i18n.getMessage("notify_when_sold") + '">'
 								+ '<span class="fa fa-eye"></span>'
 							+ '</div>'
 							+ (graph_tool_url ? '<div class="cursor-pointer" data-href="' + graph_tool_url + '" title="' + chrome.i18n.getMessage("open_graph_tool") + '">'
@@ -96,7 +96,7 @@ $("document").ready(function() {
 // Load icons, rarity item names 
 function load_metadata(item_ids) {
 	chrome.storage.sync.get(function(sync_storage) {
-		var language = sync_storage && sync_storage['settings'] && sync_storage['settings']['item_localization'] ? sync_storage['settings']['item_localization'] : "en";
+		var language = sync_storage['settings']['item_localization'];
 		
 		$.ajax({
 			type: 'GET',
@@ -173,24 +173,22 @@ $(document).off("click", ".track-this-item").on("click", ".track-this-item", fun
 	var var_item_price = $(el).data("item-price");
 	
 	chrome.storage.local.get(function(local_storage) {
-		if (local_storage['selling_track_list'] && local_storage['selling_track_list'][var_item_id]) {			
+		if (typeof local_storage['selling_track_list'][var_item_id] !== "undefined") {			
 			delete local_storage['selling_track_list'][var_item_id];
 			
 			chrome.storage.local.set({"selling_track_list": local_storage['selling_track_list']}, function() {
 				$(el).removeClass("text-info");
 			});
 		}
-		else {
-			var item_array = local_storage['selling_track_list'] ? local_storage['selling_track_list'] : {};
-			
-			item_array[var_item_id] = {
+		else {			
+			local_storage['selling_track_list'][var_item_id] = {
 				item_vnum: var_item_vnum,
 				item_count: var_item_count,
 				item_id: var_item_id,
 				item_price: var_item_price
 			};
 			
-			chrome.storage.local.set({"selling_track_list": item_array}, function() {
+			chrome.storage.local.set({"selling_track_list": local_storage['selling_track_list']}, function() {
 				$(el).addClass("text-info");
 			});
 		}

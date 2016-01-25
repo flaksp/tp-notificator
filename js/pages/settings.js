@@ -3,46 +3,27 @@ $("document").ready(function() {
 
 	chrome.storage.sync.get(function(sync_storage) {
 		// Load all API keys in <select> 
-		if (sync_storage) {
-			if (sync_storage["access_token"]) {
-				$.each(sync_storage["access_token"], function(index, value) {
-					$("#current_api_key").find("select").append('<option value="' + index + '">' + value + '</option>');
-				});
-				
-				if (sync_storage["current_api_key"]) {
-					$("#current_api_key").find("option[value=" + sync_storage["current_api_key"] + "]").attr("selected", true);
-				}
-			}
+		if (Object.size(sync_storage["access_token"]) > 0) {
+			$.each(sync_storage["access_token"], function(index, value) {
+				$("#current_api_key").find("select").append('<option value="' + index + '">' + value + '</option>');
+			});
 			
-			// Graph tool
-			if (sync_storage['settings'] && sync_storage['settings']['graph_tool']) {
-				$("#graph_tool").find("option[value=" + sync_storage['settings']['graph_tool'] + "]").attr("selected", true);
-			}
-			
-			// Algorithm
-			if (sync_storage['settings'] && sync_storage['settings']['algorithm']) {
-				$("#algorithm").find("input[value=" + sync_storage['settings']['algorithm'] + "]").attr("checked", true);
-			}
-			else {
-				$("#algorithm").find("input[value=0]").attr("checked", true);
-			}
-			
-			// Item localization
-			if (sync_storage['settings'] && sync_storage['settings']['item_localization']) {
-				$("#item_language").find("option[value=" + sync_storage['settings']['item_localization'] + "]").attr("selected", true);
-			}
-			else {
-				$("#item_language").find("option[value=en]").attr("selected", true);
-			}
-			
-			// Notifications
-			if (sync_storage['settings'] && typeof sync_storage['settings']['sound'] !== "undefined") {
-				$("#sound").find("input").val(sync_storage['settings']['sound']);
-			}
-			else {
-				$("#sound").find("input").val("0.1");
+			if (sync_storage["current_api_key"]) {
+				$("#current_api_key").find("option[value=" + sync_storage["current_api_key"] + "]").attr("selected", true);
 			}
 		}
+		
+		// Graph tool
+		$("#graph_tool").find("option[value=" + sync_storage['settings']['graph_tool'] + "]").attr("selected", true);
+		
+		// Algorithm
+		$("#algorithm").find("input[value=" + sync_storage['settings']['algorithm'] + "]").attr("checked", true);
+		
+		// Item localization
+		$("#item_language").find("option[value=" + sync_storage['settings']['item_localization'] + "]").attr("selected", true);
+		
+		// Notifications
+		$("#sound").find("input").val(sync_storage['settings']['sound']);
 	});
 });
 
@@ -73,11 +54,9 @@ $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(ev
 			}
 			else {
 				chrome.storage.sync.get(function(sync_storage) {
-					var array = Object.size(sync_storage['access_token']) > 0 ? sync_storage['access_token'] : {};
-					
-					array[api_key] = data['name'];
+					sync_storage['access_token'][api_key] = data['name'];
 
-					chrome.storage.sync.set({"access_token": array, "current_api_key": api_key}, function() {
+					chrome.storage.sync.set({"access_token": sync_storage['access_token'], "current_api_key": api_key}, function() {
 						$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_saved", [data['name']]) + '</div>');
 					
 						if ($("#current_api_key").find("option[value=" + api_key + "]").length > 0) {
@@ -181,11 +160,7 @@ $("body").off("submit", "#graph_tool").on("submit", "#graph_tool", function(even
 	
 	var graph_tool = $(el).find("option:selected").val();
 	
-	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['settings']) {
-			sync_storage['settings'] = {};
-		}
-		
+	chrome.storage.sync.get(function(sync_storage) {		
 		sync_storage['settings']['graph_tool'] = graph_tool;
 		
 		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
@@ -201,11 +176,7 @@ $("body").off("submit", "#item_language").on("submit", "#item_language", functio
 	
 	var item_language = $(el).find("option:selected").val();
 	
-	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['settings']) {
-			sync_storage['settings'] = {};
-		}
-		
+	chrome.storage.sync.get(function(sync_storage) {		
 		sync_storage['settings']['item_localization'] = item_language;
 		
 		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
@@ -222,10 +193,6 @@ $("body").off("submit", "#algorithm").on("submit", "#algorithm", function(event)
 	var algorithm = $(el).find("input:checked").val();
 	
 	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['settings']) {
-			sync_storage['settings'] = {};
-		}
-		
 		sync_storage['settings']['algorithm'] = algorithm;
 		
 		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {			
@@ -244,10 +211,6 @@ $("body").off("submit", "#sound").on("submit", "#sound", function(event) {
 	var sound = $(el).find("input").val();
 	
 	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['settings']) {
-			sync_storage['settings'] = {};
-		}
-		
 		sync_storage['settings']['sound'] = sound;
 		
 		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {			

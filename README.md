@@ -11,6 +11,9 @@ Used stuff:
 
 ---
 
+## 1.1.4.0 - January 25, 2016
+* Fixed a terrible bug when the extension didn't work with default settings. Thanks to [Dmytro Idmytro](https://vk.com/i.dmytro) for bug report.
+
 ## 1.1.3.1 - January 22, 2016
 * Minor fixes. 
 

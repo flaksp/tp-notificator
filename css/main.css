@@ -35,7 +35,7 @@ main {
 
 /* Item icons */
 .item-icon {
-	background: grey;
+	background: #999;
 	height: 3rem;
 	width: 3rem;
 }
@@ -90,6 +90,22 @@ main {
 	vertical-align: middle;
 	height: calc(100vh - 2rem);
 }
+
+/* Webkit scrollbar style */
+/*
+::-webkit-scrollbar {
+	width: 4px;
+	background: #ccc;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #373a3c;
+}
+
+::-webkit-scrollbar-corner {
+	background: #000;
+}
+*/
 
 /* Loading animation */
 .spinner {

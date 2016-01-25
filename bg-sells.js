@@ -10,9 +10,9 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				return;
 			}
 			
-			if (typeof sync_storage['settings']['algorithm'] === "undefined" || sync_storage['settings']['algorithm'] == 0 || sync_storage['settings']['algorithm'] == 3) {
+			if (sync_storage['settings']['algorithm'] == 0 || sync_storage['settings']['algorithm'] == 3) {
 				// Базовый алгоритм с отслеживанием
-				if (!local_storage['selling_track_list'] || Object.size(local_storage['selling_track_list']) == 0) {
+				if (Object.size(local_storage['selling_track_list']) == 0) {
 					console.log("You are not tracking any items.");
 					return;
 				}
@@ -89,7 +89,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					
 					if (Object.size(sold_item_ids) > 0) {
 						var myAudio = new Audio("/mp3/sell.mp3");
-						myAudio.volume = typeof sync_storage['settings']['sound'] === "undefined" ? 0.1 : sync_storage['settings']['sound'];
+						myAudio.volume = sync_storage['settings']['sound'];
 						myAudio.play();
 						
 						send_success_sell_notification(sold_item_ids);
@@ -127,7 +127,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					
 					chrome.storage.local.set({"historical_sold": Object.keys(item_ids)});
 					
-					if (local_storage["historical_sold"] && local_storage["historical_sold"].length > 0) {
+					if (local_storage["historical_sold"].length > 0) {
 						var difference = Object.keys(item_ids).filter(function(el) {
 							return local_storage["historical_sold"].indexOf(el) < 0;
 						});
@@ -152,10 +152,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 						});
 				
 						var myAudio = new Audio("/mp3/sell.mp3");
-						myAudio.volume = typeof sync_storage['settings']['sound'] === "undefined" ? 0.1 : sync_storage['settings']['sound'];
+						myAudio.volume = sync_storage['settings']['sound'];
 						myAudio.play();
 						
-						var language = sync_storage && sync_storage['settings'] && sync_storage['settings']['item_localization'] ? sync_storage['settings']['item_localization'] : "en";
+						var language = sync_storage['settings']['item_localization'];
 						
 						send_success_sell_notification(sold_item_ids, language);
 					}
@@ -204,7 +204,7 @@ function send_success_sell_notification(sold_item_ids, language) {
 				console.log("Unknown error occured while trying to load item metadata.");
 			}
 			
-			$.each(sold_item_ids, function(index, value) {
+			$.each(sold_item_ids, function(index, value) {				
 				chrome.notifications.create("notif_" + Date.now() + 'x' + Math.random(), {
 					type: "basic",
 					iconUrl: "/img/logo-359.png",

@@ -28,7 +28,7 @@ $("document").ready(function() {
 		$('#readable_sync_storage').html(JSON.stringify(sync_storage, null, 3));
 		
 		// Date installation
-		if (sync_storage['metadata'] && sync_storage['metadata']['install_date']) {
+		if (sync_storage['metadata']['install_date']) {
 			$("#installed").text(chrome.i18n.getMessage("installed") + " " + time_ago(sync_storage['metadata']['install_date']) + " " + chrome.i18n.getMessage("ago"));
 		}
 	});
@@ -36,7 +36,7 @@ $("document").ready(function() {
 	chrome.storage.local.get(function(local_storage) {
 		$('#readable_local_storage').html(JSON.stringify(local_storage, null, 3));
 		
-		if (local_storage && local_storage['error_log']) {
+		if (local_storage['error_log'].length > 0) {
 			$('#js_errors').empty();
 			
 			local_storage['error_log'].forEach(function(item, i, arr) {

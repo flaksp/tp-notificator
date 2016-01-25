@@ -78,7 +78,7 @@ $("document").ready(function() {
 // Load icons, rarity item names 
 function load_metadata(item_ids) {
 	chrome.storage.sync.get(function(sync_storage) {
-		var language = sync_storage && sync_storage['settings'] && sync_storage['settings']['item_localization'] ? sync_storage['settings']['item_localization'] : "en";
+		var language = sync_storage['settings']['item_localization'];
 		
 		$.ajax({
 			type: 'GET',

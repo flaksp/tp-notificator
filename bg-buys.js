@@ -10,9 +10,9 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				return;
 			}
 			
-			if (typeof sync_storage['settings']['algorithm'] === "undefined" || sync_storage['settings']['algorithm'] == 0 || sync_storage['settings']['algorithm'] == 2) {
+			if (sync_storage['settings']['algorithm'] == 0 || sync_storage['settings']['algorithm'] == 2) {
 				// Базовый алгоритм с отслеживанием
-				if (!local_storage['buying_track_list'] || Object.size(local_storage['buying_track_list']) == 0) {
+				if (Object.size(local_storage['buying_track_list']) == 0) {
 					console.log("You are not tracking any items.");
 					return;
 				}
@@ -89,7 +89,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					
 					if (Object.size(bought_item_ids) > 0) {
 						var myAudio = new Audio("/mp3/buy.mp3");
-						myAudio.volume = typeof sync_storage['settings']['sound'] === "undefined" ? 0.1 : sync_storage['settings']['sound'];
+						myAudio.volume = sync_storage['settings']['sound'];
 						myAudio.play();
 						
 						send_success_buy_notification(bought_item_ids);
@@ -127,7 +127,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					
 					chrome.storage.local.set({"historical_bought": Object.keys(item_ids)});
 					
-					if (local_storage["historical_bought"] && local_storage["historical_bought"].length > 0) {
+					if (local_storage["historical_bought"].length > 0) {
 						var difference = Object.keys(item_ids).filter(function(el) {
 							return local_storage["historical_bought"].indexOf(el) < 0;
 						});
@@ -150,10 +150,10 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 						});
 				
 						var myAudio = new Audio("/mp3/buy.mp3");
-						myAudio.volume = typeof sync_storage['settings']['sound'] === "undefined" ? 0.1 : sync_storage['settings']['sound'];
+						myAudio.volume = sync_storage['settings']['sound'];
 						myAudio.play();
 						
-						var language = sync_storage && sync_storage['settings'] && sync_storage['settings']['item_localization'] ? sync_storage['settings']['item_localization'] : "en";
+						var language = sync_storage['settings']['item_localization'];
 						
 						send_success_buy_notification(bought_item_ids, language);
 					}
