@@ -59,6 +59,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 							console.log("Item " + index + " has been removed from buying track list.");
 
 							// Hide item in popup window
+							/*
 							var popup_elements = chrome.extension.getViews({type: "popup"});
 							
 							for (var i = 0; i < popup_elements.length; i++) {
@@ -66,6 +67,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 									popup_elements[i].document.getElementById('item-' + index).style.display = "none";
 								}
 							}
+							*/
 						}
 						
 						else if (item_ids[index]['count'] < value['item_count']) {

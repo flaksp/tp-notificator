@@ -11,8 +11,8 @@ $("document").ready(function() {
 		$.ajax({
 			type: 'GET',
 			url: 'https://api.guildwars2.com/v2/commerce/transactions/history/sells',
-			dataType: "json",
 			data: {"page_size": 200},
+			dataType: "json",
 			headers: {"Authorization": "Bearer " + sync_storage['current_api_key']},
 			timeout: 10000,
 			success: function(data, textStatus, XMLHttpRequest) {	
@@ -34,13 +34,13 @@ $("document").ready(function() {
 				var item_ids = [];
 
 				data.forEach(function(item, i, arr) {					
-					$("#listing").append('<div class="item-' + item['id'] + ' row">'
+					$("#listing").append('<div class="row js-item-block" id="item-' + item['id'] + '" data-vnum="' + item['item_id'] + '">'
 						+ '<div class="col-xs-1">'
-							+ '<div class="item-icon item-icon-' + item['item_id'] + '"></div>'
+							+ '<div class="item-icon"></div>'
 						+ '</div>'
 						+ '<div class="col-xs-11">'
 							+ '<div class="row">'
-								+ '<div class="col-xs-6 item-name-' + item['item_id'] + ' text-truncate">' + item['item_id'] + '</div>'
+								+ '<div class="col-xs-6 js-item-name text-truncate">' + item['item_id'] + '</div>'
 								+ '<div class="col-xs-6"><span class="fa fa-clock-o"></span> ' + time_ago(Date.parse(item['purchased'])) + ' ' + chrome.i18n.getMessage("ago") + '</div>'
 								+ '<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>'
 								+ '<div class="col-xs-9">' + format_coins(item['price']) + '</div>'
@@ -91,8 +91,8 @@ function load_metadata(item_ids) {
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
 			
 				data.forEach(function(item, i, arr) {
-					$(".item-name-" + item['id']).text(item['name']).addClass("text-rarity-" + item['rarity']).attr("title", item['name']);
-					$(".item-icon-" + item['id']).html('<img src="' + item['icon'] + '" alt="icon" title="' + item['name'] + '">');
+					$(".js-item-block[data-vnum=" + item['id'] + "] .js-item-name").text(item['name']).addClass("text-rarity-" + item['rarity']).attr("title", item['name']);
+					$(".js-item-block[data-vnum=" + item['id'] + "] .item-icon").html('<img src="' + item['icon'] + '" alt="icon" title="' + item['name'] + '">');
 				});
 			},
 			error: function(x, t, m) {

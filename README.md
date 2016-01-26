@@ -11,8 +11,12 @@ Used stuff:
 
 ---
 
+## 1.1.5.0 - January 26, 2016
+* Fixed a bug when the extension didn't work after changing the aglorithm to 2nd.
+* Fixed a bug - false price range appearing if you sold/bought two similar items with different price. Thanks to [Dmytro Idmytro](https://vk.com/i.dmytro) for the bug report again.
+
 ## 1.1.4.0 - January 25, 2016
-* Fixed a terrible bug when the extension didn't work with default settings. Thanks to [Dmytro Idmytro](https://vk.com/i.dmytro) for bug report.
+* Fixed a terrible bug when the extension didn't work with default settings. Thanks to [Dmytro Idmytro](https://vk.com/i.dmytro) for reporting the bug.
 
 ## 1.1.3.1 - January 22, 2016
 * Minor fixes. 

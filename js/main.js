@@ -32,7 +32,7 @@ window.onload = function() {
 
 	$(document).on('close.bs.alert', '#vote_reminder_alert', function () {
 		chrome.storage.sync.get(function(sync_storage) {
-			if (sync_storage && sync_storage['metadata'] && sync_storage['metadata']['vote_remind'] === false) {
+			if (sync_storage['metadata']['vote_remind'] === false) {
 				sync_storage['metadata']['vote_remind'] = true;
 				
 				chrome.storage.sync.set({"metadata": sync_storage['metadata']}, function() {

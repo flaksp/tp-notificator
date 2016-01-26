@@ -515,6 +515,9 @@
 		"message": "If you don't want to receive any notifications while the browser is off, you should disable the option which allows background apps run when Google Chrome is closed. Open Chrome settings <code>chrome://settings/</code>, scroll down and click \"Show advanced settings...\", scroll down and uncheck \"Continue running background apps when Google Chrome is closed\" checkbox."
 	},
 	"cl_1_1_4_0": {
-		"message": "<li>Fixed a terrible bug when the extension didn't work with default settings. Thanks to <a href='https://vk.com/i.dmytro'>Dmytro Idmytro</a> for bug report.</li>"
+		"message": "<li>Fixed a terrible bug when the extension didn't work with default settings. Thanks to <a href='https://vk.com/i.dmytro'>Dmytro Idmytro</a> for reporting the bug.</li>"
+	},
+	"cl_1_1_5_0": {
+		"message": "<li>Fixed a bug when the extension didn't work after changing the aglorithm to 2nd.</li><li>Fixed a bug - false price range appearing if you sold/bought two similar items with different price. Thanks to <a href='https://vk.com/i.dmytro'>Dmytro Idmytro</a> for the bug report again.</li>"
 	}
 }
