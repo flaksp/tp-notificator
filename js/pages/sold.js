@@ -15,6 +15,8 @@ $("document").ready(function() {
 			dataType: "json",
 			headers: {"Authorization": "Bearer " + sync_storage['current_api_key']},
 			timeout: 10000,
+			tryCount: 0,
+			retryLimit: 3,
 			success: function(data, textStatus, XMLHttpRequest) {	
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
 			
@@ -59,6 +61,11 @@ $("document").ready(function() {
 			error: function(x, t, m) {
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
 				
+				if (++this.tryCount <= this.retryLimit) {
+					$.ajax(this);
+					return;
+				}
+				
 				$("#listing").hide().empty().fadeIn(250);
 				
 				if (t === "timeout") {
@@ -87,6 +94,8 @@ function load_metadata(item_ids) {
 			dataType: "json",
 			cache: true,
 			timeout: 10000,
+			tryCount: 0,
+			retryLimit: 3,
 			success: function(data, textStatus, XMLHttpRequest) {	
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
 			
@@ -97,6 +106,11 @@ function load_metadata(item_ids) {
 			},
 			error: function(x, t, m) {
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
+				
+				if (++this.tryCount <= this.retryLimit) {
+					$.ajax(this);
+					return;
+				}
 						
 				if (t === "timeout") {
 					$("#listing").append('<div class="alert alert-danger m-t-1" role="alert"><strong>' + chrome.i18n.getMessage("error") + '.</strong> ' + chrome.i18n.getMessage("timeout_error_metadata") + '</div>');

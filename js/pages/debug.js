@@ -8,16 +8,10 @@ $("document").ready(function() {
 		$('#storage_in_use_total progress').val(bytesInUse / (102400 / 100));
 	});
 	
-	chrome.storage.sync.getBytesInUse("access_token", function(bytesInUse) {
-		$('#storage_in_use_all_api_keys span[data-info=bytes]').text(bytesInUse);
-		$('#storage_in_use_all_api_keys span[data-info=percents]').text((bytesInUse / (8192 / 100)).toFixed(2));
-		$('#storage_in_use_all_api_keys progress').val(bytesInUse / (8192 / 100));
-	});
-	
-	chrome.storage.sync.getBytesInUse("current_api_key", function(bytesInUse) {
-		$('#storage_in_use_current_api_key span[data-info=bytes]').text(bytesInUse);
-		$('#storage_in_use_current_api_key span[data-info=percents]').text((bytesInUse / (8192 / 100)).toFixed(2));
-		$('#storage_in_use_current_api_key progress').val(bytesInUse / (8192 / 100));
+	chrome.storage.local.getBytesInUse(function(bytesInUse) {
+		$('#storage_in_use_local_current_api_key span[data-info=bytes]').text(bytesInUse);
+		$('#storage_in_use_local_current_api_key span[data-info=percents]').text((bytesInUse / (5242880 / 100)).toFixed(2));
+		$('#storage_in_use_local_current_api_key progress').val(bytesInUse / (5242880 / 100));
 	});
 	
 	chrome.storage.sync.get(function(sync_storage) {
@@ -48,18 +42,6 @@ $("document").ready(function() {
 		}
 	});
 	
-	chrome.storage.local.getBytesInUse(function(bytesInUse) {
-		$('#storage_in_use_local_current_api_key span[data-info=bytes]').text(bytesInUse);
-		$('#storage_in_use_local_current_api_key span[data-info=percents]').text((bytesInUse / (5242880 / 100)).toFixed(2));
-		$('#storage_in_use_local_current_api_key progress').val(bytesInUse / (5242880 / 100));
-	});
-	
-	chrome.storage.sync.getBytesInUse("settings", function(bytesInUse) {
-		$('#storage_in_use_settings span[data-info=bytes]').text(bytesInUse);
-		$('#storage_in_use_settings span[data-info=percents]').text((bytesInUse / (8192 / 100)).toFixed(2));
-		$('#storage_in_use_settings progress').val(bytesInUse / (8192 / 100));
-	});
-	
 	// Last error info
 	if (chrome.runtime.lastError) {
 		$("#last_error").html(chrome.runtime.lastError);
@@ -87,6 +69,8 @@ $("document").ready(function() {
 				dataType: "json",
 				headers: {"Authorization": "Bearer " + sync_storage['current_api_key']},
 				timeout: 10000,
+				tryCount: 0,
+				retryLimit: 3,
 				success: function(data, textStatus, XMLHttpRequest) {
 					/* Fix */ if (current_page != "debug") { load_page(current_page, true); return; }
 					
@@ -98,6 +82,11 @@ $("document").ready(function() {
 				},
 				error: function(x, t, m) {
 					/* Fix */ if (current_page != "debug") { load_page(current_page, true); return; }
+					
+					if (++this.tryCount <= this.retryLimit) {
+						$.ajax(this);
+						return;
+					}
 					
 					if (t === "timeout") {
 						$("#permissions").html('<span class="text-danger">' + chrome.i18n.getMessage("connection_timeout") + '</span>');

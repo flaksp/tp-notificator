@@ -177,6 +177,8 @@ function send_success_buy_notification(bought_item_ids, language) {
 		dataType: "json",
 		cache: true,
 		timeout: 10000,
+		tryCount: 0,
+		retryLimit: 3,
 		success: function(data, textStatus, XMLHttpRequest) {
 			$.each(bought_item_ids, function(index, value) {
 				var data_index = findIndexByKeyValue(data, "id", index);
@@ -193,6 +195,11 @@ function send_success_buy_notification(bought_item_ids, language) {
 			});
 		},
 		error: function(x, t, m) {
+			if (++this.tryCount <= this.retryLimit) {
+				$.ajax(this);
+				return;
+			}
+			
 			if (t === "timeout") {
 				console.log("Timeout error occured while trying to recieve item metadata.");
 			}

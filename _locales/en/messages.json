@@ -68,12 +68,6 @@
 	"storage_usage": {
 		"message": "Sync storage"
 	},
-	"current_api_key": {
-		"message": "Current API key"
-	},
-	"settings_storage_in_use": {
-		"message": "Settings"
-	},
 	"item_count_debug": {
 		"message": "Element count"
 	},
@@ -204,9 +198,6 @@
 	},
 	"tradingpost_required": {
 		"message": "Your API key must have \"tradingpost\" permission."
-	},
-	"contacts_introduction": {
-		"message": "This is my first browser extension I made not for personal use so don't be hard on it — better contact me and tell about a bug or suggest an idea. I won't ignore anyone and will answer as fast as I read the message."
 	},
 	"contacts_my_coordinates": {
 		"message": "My coordinates (russian and english):"
@@ -519,5 +510,20 @@
 	},
 	"cl_1_1_5_0": {
 		"message": "<li>Fixed a bug when the extension didn't work after changing the aglorithm to 2nd.</li><li>Fixed a bug - false price range appearing if you sold/bought two similar items with different price. Thanks to <a href='https://vk.com/i.dmytro'>Dmytro Idmytro</a> for the bug report again.</li>"
+	},
+	"cl_1_1_6_0": {
+		"message": "<li>Removed some useless information from the debug page.</li><li>Updated <a class='local-page' data-page='faq/browsers'>supported browsers FAQ page</a>.</li><li>Fixed a bug when you receive a huge amount of notifications after changing algorithm from 1st to 2nd.</li><li>Reduced the chance to get an error while loading any data from Guild Wars 2 servers.</li>"
+	},
+	"in_plans": {
+		"message": "Planned for the future, however the development won't start until the Chromium version is polished thoroughly."
+	},
+	"contacts_introduction": {
+		"message": "This is my first browser extension I made not for personal use so don't be too harsh — better contact me and tell about a bug or suggest an idea. I won't ignore anyone and will answer as fast as I read the message. Or you can create an issue on <a href='https://github.com/terron-kun/tp-notificator'>GitHub</a>."
+	},
+	"chromium_based": {
+		"message": "Chromium-based browsers: Google Chrome, Google Chrome Canary, Chromium"
+	},
+	"firefox_based": {
+		"message": "Firefox-based browsers: Mozilla Firefox, Tor Browser"
 	}
 }

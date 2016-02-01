@@ -43,11 +43,10 @@ $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(ev
 		dataType: "json",
 		headers: {"Authorization": "Bearer " + api_key},
 		timeout: 10000,
+		tryCount: 0,
+		retryLimit: 3,
 		success: function(data, textStatus, XMLHttpRequest) {
-			if (current_page != "settings") {
-				load_page(current_page, true);
-				return;
-			}
+			/* Fix */ if (current_page != "settings") { load_page(current_page, true); return; }
 					
 			if (data['permissions'].indexOf("tradingpost") == -1) {
 				$(el).find(".js-notifications").prepend('<div class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("tradingpost_required") + '</div>');
@@ -75,8 +74,10 @@ $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(ev
 			$(el).find("fieldset").removeAttr("disabled");
 		},
 		error: function(x, t, m) {
-			if (current_page != "settings") {
-				load_page(current_page, true);
+			/* Fix */ if (current_page != "settings") { load_page(current_page, true); return; }
+			
+			if (++this.tryCount <= this.retryLimit) {
+				$.ajax(this);
 				return;
 			}
 			
@@ -195,8 +196,10 @@ $("body").off("submit", "#algorithm").on("submit", "#algorithm", function(event)
 	chrome.storage.sync.get(function(sync_storage) {
 		sync_storage['settings']['algorithm'] = algorithm;
 		
-		chrome.storage.sync.set({"settings": sync_storage['settings'], "historical_bought": [], "historical_sold": []}, function() {			
-			$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("algorithm_changed") + '</div>');
+		chrome.storage.sync.set({"settings": sync_storage['settings'], "historical_bought": [], "historical_sold": []}, function() {
+			chrome.storage.local.set({"historical_bought": [], "historical_sold": []}, function() {
+				$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("algorithm_changed") + '</div>');
+			});
 		});
 	});	
 });
