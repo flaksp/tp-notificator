@@ -11,13 +11,12 @@ Someone asked me to release extension on GitHub and I did so. I've never thought
 * [Handlebars](http://handlebarsjs.com/) 4.0.5
 * [Font Awesome](https://fortawesome.github.io/Font-Awesome/) 4.5.0
 
-## Latest release
-### 1.1.6.0 - February 1, 2016
-#### Enhancements
+## Latest release - 1.1.6.0 - February 1, 2016
+### Enhancements
 * Removed some useless information from the debug page.
 * Updated supported browsers FAQ page.
 
-#### Fixes
+### Fixes
 * Fixed a bug when you receive a huge amount of notifications after changing algorithm from 1st to 2nd. 
 * Reduced the chance to get an error while loading any data from Guild Wars 2 servers. 
 
