@@ -1,5 +1,5 @@
 # Guild Wars 2 Trading Post Notificator
-![version 1.1.6.0](https://img.shields.io/badge/version-1.1.6.0-green.svg) ![build passing](https://img.shields.io/badge/build-passing-brightgreen.svg) ![jquery 2.1.4](https://img.shields.io/badge/jquery-2.1.4-blue.svg) ![bootstrap 4.0.0.a2](https://img.shields.io/badge/bootstrap-4.0.0.a2-blue.svg) ![handlebars 4.0.5](https://img.shields.io/badge/handlebars-4.0.5-blue.svg) ![fontAwesome 4.5.0](https://img.shields.io/badge/fontAwesome-4.5.0-blue.svg)
+![version 1.1.6.0](https://img.shields.io/badge/version-1.1.6.0-green.svg) ![build passing](https://img.shields.io/badge/build-passing-brightgreen.svg) ![jquery 2.1.4](https://img.shields.io/badge/jquery-2.1.4-blue.svg) ![bootstrap 4.0.0.a2](https://img.shields.io/badge/bootstrap-4.0.0%20alpha%202-blue.svg) ![handlebars 4.0.5](https://img.shields.io/badge/handlebars-4.0.5-blue.svg) ![fontAwesome 4.5.0](https://img.shields.io/badge/font%20awesome-4.5.0-blue.svg)
 
 You can get it at [Chrome store](https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk) now for Google Chrome, Google Chrome Canary and Chromium.
 
