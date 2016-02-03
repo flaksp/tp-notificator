@@ -34,41 +34,79 @@ $("document").ready(function() {
 					$("#listing").append('<div id="remind_notification"></div>');
 					remind_to_vote_up("#remind_notification");
 					
-					$("#listing").append('<div class="row m-b-1"><div class="col-xs-6"><button type="button" id="track_button" data-act="track" class="btn btn-primary btn-sm btn-block">' + chrome.i18n.getMessage("track_all") + '</button></div><div class="col-xs-6"><button type="button" id="untrack_button" data-act="untrack" class="btn btn-warning btn-sm btn-block">' + chrome.i18n.getMessage("untrack_all") + '</button></div></div>');
+					$("#listing").append('<div class="row m-b-1">' +
+						'<div class="col-xs-6">' +
+							'<button type="button" id="track_button" data-act="track" class="btn btn-primary btn-sm btn-block">' + 
+								chrome.i18n.getMessage("track_all") + 
+							'</button>' +
+						'</div>' +
+						'<div class="col-xs-6">' +
+							'<button type="button" id="untrack_button" data-act="untrack" class="btn btn-warning btn-sm btn-block">' +
+								chrome.i18n.getMessage("untrack_all") +
+							'</button>' +
+						'</div>' +
+					'</div>');
 					
 					var item_ids = [];
 
-					data.forEach(function(item, i, arr) {
-						if (sync_storage['settings']['graph_tool'] > 0) {
-							var graph_tool_url = create_graph_url(item['item_id'], sync_storage['settings']['graph_tool']);
-						}
-						
-						$("#listing").append('<div id="item-' + item['id'] + '" class="row js-item-block" data-vnum="' + item['item_id'] + '" data-id="' + item['id'] + '" data-count="' + item['quantity'] + '" data-price="' + item['price'] + '">'
-						+ '<div class="col-xs-1">'
-							+ '<div class="item-icon"></div>'
-						+ '</div>'
-						+ '<div class="col-xs-10">'
-							+ '<div class="row">'
-								+ '<div class="col-xs-6 js-item-name text-truncate">' + item['item_id'] + '</div>'
-								+ '<div class="col-xs-6"><span class="fa fa-clock-o"></span> ' + time_ago(Date.parse(item['created'])) + ' ' + chrome.i18n.getMessage("ago") + '</div>'
-								+ '<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>'
-								+ '<div class="col-xs-4">' + format_coins(item['price']) + '</div>'
-								+ '<div class="col-xs-5" title="' + chrome.i18n.getMessage("price_difference_buy") + '"><span class="fa fa-sort-amount-asc"></span> <span class="js-price-range">' + chrome.i18n.getMessage("loading") + '</span></div>'
-							+ '</div>'
-						+ '</div>'
-						+ '<div class="col-xs-1 text-xs-center">'
-							+ '<div class="cursor-pointer js-track-this-item' + (typeof local_storage['buying_track_list'][item['id']] !== "undefined" ? ' text-info' : '') + '" title="' + chrome.i18n.getMessage("notify_when_bought") + '">'
-								+ '<span class="fa fa-eye"></span>'
-							+ '</div>'
-							+ (graph_tool_url ? '<div class="cursor-pointer" data-href="' + graph_tool_url + '" title="' + chrome.i18n.getMessage("open_graph_tool") + '">'
-								+ '<span class="fa fa-area-chart"></span>'
-							+ '</div>' : '')
-						+ '</div>'
-						+ (data.length - 1 != i ? '<div class="col-xs-12"><hr></div>' : '')
-						+ '</div>');
+					data.forEach(function(item, i, arr) {						
+						$("#listing").append('<div id="item-' + item['id'] + '" class="row js-item-block" data-vnum="' + item['item_id'] + '" data-id="' + item['id'] + '" data-count="' + item['quantity'] + '" data-price="' + item['price'] + '">' +
+							'<div class="col-xs-1">' +
+								'<div class="item-icon"></div>' +
+							'</div>' +
+							'<div class="col-xs-10">' +
+								'<div class="row">' +
+									'<div class="col-xs-6 js-item-name text-truncate">' + item['item_id'] + '</div>' +
+									'<div class="col-xs-5">' +
+										'<span class="fa fa-clock-o"></span> ' +
+										time_ago(Date.parse(item['created'])) + ' ' + chrome.i18n.getMessage("ago") +
+									'</div>' +
+									'<div class="col-xs-1 text-xs-center">' +
+										'<div class="cursor-pointer js-track-this-item" title="' + chrome.i18n.getMessage("notify_when_bought") + '">' +
+											'<span class="fa fa-eye"></span>' +
+										'</div>' +
+									'</div>' +
+									'<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>' +
+									'<div class="col-xs-4">' + format_coins(item['price']) + '</div>' +
+									'<div class="col-xs-4" title="' + chrome.i18n.getMessage("price_difference_buy") + '">' +
+										'<span class="fa fa-sort-amount-asc"></span> ' +
+										'<span class="js-price-range">' + chrome.i18n.getMessage("loading") + '</span>' +
+									'</div>' +
+									'<div class="col-xs-1 text-xs-center">' +
+										'<a class="text-color-black js-graph-tool" title="' + chrome.i18n.getMessage("open_graph_tool") + '">' +
+											'<span class="fa fa-area-chart"></span>' +
+										'</a>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+							(data.length - 1 != i ? '<div class="col-xs-12"><hr></div>' : '') +
+						'</div>');
 						
 						item_ids.push(item['item_id']);
 					});
+					
+					// Build graph tool links
+					if (sync_storage['settings']['graph_tool']) {						
+						$(".js-item-block").each(function(index) {
+							var graph_tool_url = create_graph_url($(this).data("vnum"), sync_storage['settings']['graph_tool']);
+							$(this).find(".js-graph-tool").attr("href", graph_tool_url);
+						});
+					}
+					else {
+						$(".js-graph-tool").attr("hidden", true);
+					}
+					
+					// Mark eye buttons pressed
+					if (sync_storage['settings']['algorithm'] == 0 || sync_storage['settings']['algorithm'] == 2) {						
+						$(".js-item-block").each(function(index) {
+							if (typeof local_storage['buying_track_list'][parseInt($(this).data("id"))] !== "undefined") {
+								$(this).find(".js-track-this-item").addClass("text-info");
+							}
+						});
+					}
+					else {
+						$(".js-track-this-item").attr("hidden", true);
+					}
 					
 					$("#listing").append('<div class="small text-muted m-t-1">' + chrome.i18n.getMessage("number_results", [XMLHttpRequest.getResponseHeader('X-Result-Count'), XMLHttpRequest.getResponseHeader('X-Result-Total')]) + ' ' + chrome.i18n.getMessage("results_are_cached", [time_ago(Date.parse(XMLHttpRequest.getResponseHeader('Date')) - 3000)]) + ' <a class="local-page" data-page="faq/how_it_works"><span class="fa fa-question-circle"></span></a></div>');
 					

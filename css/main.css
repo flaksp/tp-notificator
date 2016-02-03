@@ -91,21 +91,18 @@ main {
 	height: calc(100vh - 2rem);
 }
 
+.text-color-black {color: #373a3c !important; }
+
 /* Webkit scrollbar style */
-/*
 ::-webkit-scrollbar {
-	width: 4px;
-	background: #ccc;
+	width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
 	background: #373a3c;
+	border-radius: 4px;
 }
 
-::-webkit-scrollbar-corner {
-	background: #000;
-}
-*/
 
 /* Loading animation */
 .spinner {

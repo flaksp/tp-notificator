@@ -525,5 +525,8 @@
 	},
 	"firefox_based": {
 		"message": "Браузеры, основанные на Firefox: Mozilla Firefox, Tor Browser"
+	},
+	"cl_1_1_6_1": {
+		"message": "<li>Проделана работа над оптимизацией.</li><li>Внесены изменения в интерфейс и дизайн.</li>"
 	}
 }
