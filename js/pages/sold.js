@@ -34,22 +34,53 @@ $("document").ready(function() {
 				remind_to_vote_up("#remind_notification");
 				
 				var item_ids = [];
+				
+				$("#listing").append(
+					'<div class="row">' +
+						'<div class="col-xs-4 text-xs-center">' +
+							'<div class="lead">1 ' + chrome.i18n.getMessage("days") + '</div>' +
+							'<span id="profit-1-days">' + chrome.i18n.getMessage("loading") + '</span>' +
+						'</div>' +
+						'<div class="col-xs-4 text-xs-center">' +
+							'<div class="lead">7 ' + chrome.i18n.getMessage("days") + '</div>' +
+							'<span id="profit-7-days">' + chrome.i18n.getMessage("loading") + '</span>' +
+						'</div>' +
+						'<div class="col-xs-4 text-xs-center">' +
+							'<div class="lead">14 ' + chrome.i18n.getMessage("days") + '</div>' +
+							'<span id="profit-14-days">' + chrome.i18n.getMessage("loading") + '</span>' +
+						'</div>' +
+						'<div class="col-xs-6 text-xs-center">' +
+							'<div class="lead">30 ' + chrome.i18n.getMessage("days") + '</div>' +
+							'<span id="profit-30-days">' + chrome.i18n.getMessage("loading") + '</span>' +
+						'</div>' +
+						'<div class="col-xs-6 text-xs-center">' +
+							'<div class="lead">90 ' + chrome.i18n.getMessage("days") + '</div>' +
+							'<span id="profit-90-days">' + chrome.i18n.getMessage("loading") + '</span>' +
+						'</div>' +
+					'</div>' +
+					'<hr>'
+				);
 
 				data.forEach(function(item, i, arr) {					
-					$("#listing").append('<div class="row js-item-block" id="item-' + item['id'] + '" data-vnum="' + item['item_id'] + '">'
-						+ '<div class="col-xs-1">'
-							+ '<div class="item-icon"></div>'
-						+ '</div>'
-						+ '<div class="col-xs-11">'
-							+ '<div class="row">'
-								+ '<div class="col-xs-8 js-item-name text-truncate">' + item['item_id'] + '</div>'
-								+ '<div class="col-xs-4"><span class="fa fa-clock-o"></span> ' + time_ago(Date.parse(item['purchased'])) + ' ' + chrome.i18n.getMessage("ago") + '</div>'
-								+ '<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>'
-								+ '<div class="col-xs-9">' + format_coins(item['price']) + '</div>'
-							+ '</div>'
-						+ '</div>'
-						+ (data.length - 1 != i ? '<div class="col-xs-12"><hr></div>' : '')
-					+ '</div>');
+					$("#listing").append(
+						'<div class="row js-item-block" id="item-' + item['id'] + '" data-vnum="' + item['item_id'] + '">' +
+							'<div class="col-xs-1">' +
+								'<div class="item-icon"></div>' +
+							'</div>' +
+							'<div class="col-xs-11">' +
+								'<div class="row">' +
+									'<div class="col-xs-8 js-item-name text-truncate">' + item['item_id'] + '</div>' +
+									'<div class="col-xs-4">' +
+										'<span class="fa fa-clock-o"></span> ' +
+										time_ago(Date.parse(item['purchased'])) + ' ' + chrome.i18n.getMessage("ago") +
+									'</div>' +
+									'<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>' +
+									'<div class="col-xs-9">' + format_coins(item['price']) + '</div>' +
+								'</div>' +
+							'</div>' +
+							(data.length - 1 != i ? '<div class="col-xs-12"><hr></div>' : '') +
+						'</div>'
+					);
 					
 					item_ids.push(item['item_id']);
 				});
@@ -57,6 +88,64 @@ $("document").ready(function() {
 				$("#listing").append('<div class="small text-muted m-t-1">' + chrome.i18n.getMessage("number_results", [XMLHttpRequest.getResponseHeader('X-Result-Count'), XMLHttpRequest.getResponseHeader('X-Result-Total')]) + ' ' + chrome.i18n.getMessage("results_are_cached", [time_ago(Date.parse(XMLHttpRequest.getResponseHeader('Date')) - 3000)]) + ' <a class="local-page" data-page="faq/how_it_works"><span class="fa fa-question-circle"></span></a></div>');
 				
 				load_metadata(item_ids.join(','));
+				
+				// Calcuating total profit
+				deep_ajax_load({
+					"url": 'https://api.guildwars2.com/v2/commerce/transactions/history/sells',
+					"api_key": sync_storage['current_api_key'],
+					"local_page": "sold",
+					"api_page": 0
+				}, function(stat, data) {
+					if (stat == "fail") {
+						if (data[1] === "timeout") {
+							$("#profit-1-days, #profit-7-days, #profit-14-days, #profit-30-days, #profit-90-days").html(chrome.i18n.getMessage("connection_timeout"));
+						}
+						else if (data[0]['responseJSON'] && data[0]['responseJSON']['text']) {
+							$("#profit-1-days, #profit-7-days, #profit-14-days, #profit-30-days, #profit-90-days").html(data[0]['responseJSON']['text']);
+						}
+						else {
+							$("#profit-1-days, #profit-7-days, #profit-14-days, #profit-30-days, #profit-90-days").html(chrome.i18n.getMessage("unknown_error"));
+						}
+						
+						return;
+					}
+					
+					var total_profit = {
+						1:  0,
+						7:  0,
+						14: 0,
+						30: 0,
+						90: 0
+					};
+					
+					data.forEach(function(item, i, arr) {
+						var date = Date.parse(item['purchased']);
+						
+						if (date + 1000 * 60 * 60 * 24 * 1 >= Date.now()) {
+							total_profit[1] += item['price'] * item['quantity'];
+						}
+						
+						if (date + 1000 * 60 * 60 * 24 * 7 >= Date.now()) {
+							total_profit[7] += item['price'] * item['quantity'];
+						}
+						
+						if (date + 1000 * 60 * 60 * 24 * 14 >= Date.now()) {
+							total_profit[14] += item['price'] * item['quantity'];
+						}
+						
+						if (date + 1000 * 60 * 60 * 24 * 30 >= Date.now()) {
+							total_profit[30] += item['price'] * item['quantity'];
+						}
+						
+						total_profit[90] += item['price'] * item['quantity'];
+					});
+					
+					$("#profit-1-days").html(format_coins(total_profit[1]));
+					$("#profit-7-days").html(format_coins(total_profit[7]));
+					$("#profit-14-days").html(format_coins(total_profit[14]));
+					$("#profit-30-days").html(format_coins(total_profit[30]));
+					$("#profit-90-days").html(format_coins(total_profit[90]));
+				});
 			},
 			error: function(x, t, m) {
 				/* Fix */ if (current_page != "sold") { load_page(current_page, true); return; }
@@ -111,7 +200,7 @@ function load_metadata(item_ids) {
 					$.ajax(this);
 					return;
 				}
-						
+			
 				if (t === "timeout") {
 					$("#listing").append('<div class="alert alert-danger m-t-1" role="alert"><strong>' + chrome.i18n.getMessage("error") + '.</strong> ' + chrome.i18n.getMessage("timeout_error_metadata") + '</div>');
 				}

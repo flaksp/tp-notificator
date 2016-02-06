@@ -34,6 +34,9 @@ $("document").ready(function() {
 					$("#listing").append('<div id="remind_notification"></div>');
 					remind_to_vote_up("#remind_notification");
 					
+					var item_ids = [];
+					var total_price = 0;
+					
 					$("#listing").append('<div class="row m-b-1">' +
 						'<div class="col-xs-6">' +
 							'<button type="button" id="track_button" data-act="track" class="btn btn-primary btn-sm btn-block">' + 
@@ -47,9 +50,14 @@ $("document").ready(function() {
 						'</div>' +
 					'</div>');
 					
-					var item_ids = [];
+					$("#listing").append('<hr>' +
+					chrome.i18n.getMessage("profit_from_all_transactions") + ': ' +
+					'<span id="total-profit"></span>' +
+					'<hr>');
 
-					data.forEach(function(item, i, arr) {						
+					data.forEach(function(item, i, arr) {		
+						total_price += item['price'] * item['quantity'];
+						
 						$("#listing").append('<div id="item-' + item['id'] + '" class="row js-item-block" data-vnum="' + item['item_id'] + '" data-id="' + item['id'] + '" data-count="' + item['quantity'] + '" data-price="' + item['price'] + '">' +
 							'<div class="col-xs-1">' +
 								'<div class="item-icon"></div>' +
@@ -85,8 +93,11 @@ $("document").ready(function() {
 						item_ids.push(item['item_id']);
 					});
 					
+					// Displaying total price
+					$("#total-profit").html(format_coins(total_price));
+					
 					// Build graph tool links
-					if (sync_storage['settings']['graph_tool']) {						
+					if (sync_storage['settings']['graph_tool'] > 0) {						
 						$(".js-item-block").each(function(index) {
 							var graph_tool_url = create_graph_url($(this).data("vnum"), sync_storage['settings']['graph_tool']);
 							$(this).find(".js-graph-tool").attr("href", graph_tool_url);
@@ -198,8 +209,13 @@ function load_price_range(item_ids) {
 			$(".js-item-block").each(function(index) {
 				var current_price = $(this).data("price");
 				var best_price = data[findIndexByKeyValue(data, "id", $(this).data("vnum"))]['sells']['unit_price'];
+				var price_range = current_price - best_price;
 				
-				$(this).find(".js-price-range").html(format_coins(current_price - best_price));
+				$(this).find(".js-price-range").html(format_coins(price_range));
+				
+				if (price_range > 0) {
+					$(this).find(".js-price-range").addClass("text-danger");
+				}
 			});
 		},
 		error: function(x, t, m) {

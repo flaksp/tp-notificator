@@ -528,5 +528,14 @@
 	},
 	"cl_1_1_6_1": {
 		"message": "<li>UI improvements.</li><li>Optimization improvements.</li>"
+	},
+	"cl_1_2_0_0": {
+		"message": "<li>Added more information to historical transactions and current transactions pages.</li><li>Fixed a bug with the graph tool setting from the last update.</li><li>UI improvements.</li>"
+	},
+	"profit_from_all_transactions": {
+		"message": "Total profit"
+	},
+	"spent_to_all_transactions": {
+		"message": "Total costs"
 	}
 }
