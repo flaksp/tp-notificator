@@ -9,7 +9,7 @@ This extenstion uses [jQuery](https://jquery.com/) 2.2.0, [Bootstrap](http://get
 ### Enhancements
 * Added a page where you can check prices of gold and gems.
 
-## Fixes
+### Fixes
 * Minor fixes from the last update.
 
 Check out previuos releases at [releases](https://github.com/terron-kun/tp-notificator/releases) page.
