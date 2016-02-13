@@ -196,8 +196,8 @@ $("body").off("submit", "#algorithm").on("submit", "#algorithm", function(event)
 	chrome.storage.sync.get(function(sync_storage) {
 		sync_storage['settings']['algorithm'] = algorithm;
 		
-		chrome.storage.sync.set({"settings": sync_storage['settings'], "historical_bought": [], "historical_sold": []}, function() {
-			chrome.storage.local.set({"historical_bought": [], "historical_sold": []}, function() {
+		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
+			chrome.storage.local.set({"historical_bought": [], "historical_sold": [], "buying_track_list": {}, "selling_track_list": {}}, function() {
 				$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("algorithm_changed") + '</div>');
 			});
 		});

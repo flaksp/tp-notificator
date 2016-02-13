@@ -198,3 +198,10 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	background: #0275d8;
 }
 
+.gem {
+	background: url(/img/gem.png) center center no-repeat;
+	padding: 0.5rem;
+	background-size: 1rem;
+	margin: 0 3px;
+	background-size: contain;
+}

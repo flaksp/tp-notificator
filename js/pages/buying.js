@@ -37,23 +37,29 @@ $("document").ready(function() {
 					var item_ids = [];
 					var total_price = 0;
 					
-					$("#listing").append('<div class="row m-b-1">' +
-						'<div class="col-xs-6">' +
-							'<button type="button" id="track_button" data-act="track" class="btn btn-primary btn-sm btn-block">' + 
-								chrome.i18n.getMessage("track_all") + 
-							'</button>' +
-						'</div>' +
-						'<div class="col-xs-6">' +
-							'<button type="button" id="untrack_button" data-act="untrack" class="btn btn-warning btn-sm btn-block">' +
-								chrome.i18n.getMessage("untrack_all") +
-							'</button>' +
-						'</div>' +
-					'</div>');
+					$("#listing").append(
+						'<div class="row" id="two-track-buttons">' +
+							'<div class="col-xs-6">' +
+								'<button type="button" id="track_button" data-act="track" class="btn btn-primary btn-sm btn-block">' + 
+									chrome.i18n.getMessage("track_all") + 
+								'</button>' +
+							'</div>' +
+							'<div class="col-xs-6">' +
+								'<button type="button" id="untrack_button" data-act="untrack" class="btn btn-warning btn-sm btn-block">' +
+									chrome.i18n.getMessage("untrack_all") +
+								'</button>' +
+							'</div>' +
+							'<div class="col-xs-12">' +
+								'<hr>' +
+							'</div>' +
+						'</div>'
+					);
 					
-					$("#listing").append('<hr>' +
-					chrome.i18n.getMessage("spent_to_all_transactions") + ': ' +
-					'<span id="total-profit"></span>' +
-					'<hr>');
+					$("#listing").append(
+						chrome.i18n.getMessage("spent_to_all_transactions") + ': ' +
+						'<span id="total-profit"></span>' +
+						'<hr>'
+					);
 
 					data.forEach(function(item, i, arr) {
 						total_price += item['price'] * item['quantity'];
@@ -62,10 +68,10 @@ $("document").ready(function() {
 							'<div class="col-xs-1">' +
 								'<div class="item-icon"></div>' +
 							'</div>' +
-							'<div class="col-xs-10">' +
+							'<div class="col-xs-11">' +
 								'<div class="row">' +
-									'<div class="col-xs-6 js-item-name text-truncate">' + item['item_id'] + '</div>' +
-									'<div class="col-xs-5">' +
+									'<div class="col-xs-7 js-item-name text-truncate">' + item['item_id'] + '</div>' +
+									'<div class="col-xs-4">' +
 										'<span class="fa fa-clock-o"></span> ' +
 										time_ago(Date.parse(item['created'])) + ' ' + chrome.i18n.getMessage("ago") +
 									'</div>' +
@@ -116,7 +122,7 @@ $("document").ready(function() {
 						});
 					}
 					else {
-						$(".js-track-this-item").attr("hidden", true);
+						$(".js-track-this-item, #two-track-buttons").attr("hidden", true);
 					}
 					
 					$("#listing").append('<div class="small text-muted m-t-1">' + chrome.i18n.getMessage("number_results", [XMLHttpRequest.getResponseHeader('X-Result-Count'), XMLHttpRequest.getResponseHeader('X-Result-Total')]) + ' ' + chrome.i18n.getMessage("results_are_cached", [time_ago(Date.parse(XMLHttpRequest.getResponseHeader('Date')) - 3000)]) + ' <a class="local-page" data-page="faq/how_it_works"><span class="fa fa-question-circle"></span></a></div>');

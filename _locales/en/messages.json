@@ -449,7 +449,7 @@
 		"message": "Volume of notifications has been successfully changed."
 	},
 	"sound_setting": {
-		"message": "Volume of notifications is regulated by a number from <code>0</code> (it's 0%) to <code>1</code> (100%). Recommended volume is <code>0.1</code> (10%)."
+		"message": "Recommended volume is 10%."
 	},
 	"cl_1_1_2_0": {
 		"message": "<li>Fixed a bug with the algorithm switcher.</li><li>Added a volume regulation.</li>"
@@ -537,5 +537,14 @@
 	},
 	"spent_to_all_transactions": {
 		"message": "Total costs"
+	},
+	"cl_1_3_0_0": {
+		"message": "<li>Added a page where you can check prices of gold and gems.</li><li>Minor fixes from the last update.</li>"
+	},
+	"currency_exchange": {
+		"message": "Currency exchange"
+	},
+	"cost": {
+		"message": "cost"
 	}
 }
