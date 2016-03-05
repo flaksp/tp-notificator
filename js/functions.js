@@ -78,8 +78,7 @@ function deep_ajax_load(obj, callback_func) {
 
 function remind_to_vote_up(selector) {
 	chrome.storage.sync.get(function(sync_storage) {
-		if (sync_storage['metadata'] && sync_storage['metadata']['install_date'] && sync_storage['metadata']['vote_remind'] === false
-		&& sync_storage['metadata']['install_date'] + 60 * 60 * 24 * 14 * 1000 < Date.now()) {
+		if (sync_storage['vote_remind'] === false && sync_storage['install_date'] + 60 * 60 * 24 * 14 * 1000 < Date.now()) {
 			$(selector).prepend('<div class="alert alert-info alert-dismissible fade in" id="vote_reminder_alert" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("vote_reminder") + '</div>');
 		}
 	});
@@ -192,4 +191,14 @@ function create_graph_url(id, graph_id) {
 	];
 	
 	return graph_list[graph_id - 1];
-}		
+}
+
+function create_graph_gem_url(graph_id) {
+	var graph_list = [
+		"https://www.gw2shinies.com/gem.php",
+		"http://www.gw2spidy.com/gem",
+		"https://www.gw2tp.com/gems"
+	];
+	
+	return graph_list[graph_id - 1];
+}	

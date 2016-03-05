@@ -127,7 +127,7 @@
 		"message": "Default graph tool successfully changed."
 	},
 	"enter_api_key_first": {
-		"message": "Please enter API key with \"tradingpost\" permission on <a class='local-page cursor-pointer' data-page='settings'>settings page</a> to see your trading post transactions. If you don't know what is API key you can read about it in <a class='local-page cursor-pointer' data-page='faq/access_token'>FAQ</a>."
+		"message": "Please enter API key with \"tradingpost\" permission on <a class='local-page' data-page='settings'>settings page</a> to see your trading post transactions. If you don't know what is API key you can read about it in <a class='local-page' data-page='faq/access_token'>FAQ</a>."
 	},
 	"no_selling_transactions": {
 		"message": "You are not selling any items right now."
@@ -546,5 +546,79 @@
 	},
 	"cost": {
 		"message": "cost"
+	},
+	"notify_400_gems": { 
+		"message": "Notify when 400 gems cost less than this amount of copper" 
+	}, 
+	"copper_calculating_notify": { 
+		"message": "100 copper = 1 silver; 10000 copper = 1 gold." 
+	}, 
+	"notify_10_gold": { 
+		"message": "Notify when 10 gold cost less than this amount of gems" 
+	}, 
+	"set_zero_to_disable": { 
+		"message": "Set <code>0</code> to disable tracking" 
+	}, 
+	"cl_1_4_0_0": { 
+		"message": "<li>You can get notifications when gems or gold exchange rates are profitable for you.</li><li>Added a link to graphs for gem exchange rate. Works only if you've selected any graph tool in your settings.</li><li>Settings are not syncing between Chrome accounts and browsers anymore. Every browser can get personal settings now. But API-keys are still syncing.</li><li>Added a new option which allows you to define a default page which will appear when you open the extension.</li><li>Minor bugfixes.</li><li>Optimization improvements. Yep, I love optimization.</li>" 
+	}, 
+	"todo_list": { 
+		"message": "ToDo list (russian only)" 
+	}, 
+	"changes_saved": { 
+		"message": "Changes have been successfully saved." 
+	}, 
+	"gem_price_dropped_down": { 
+		"message": "Gem price dropped down" 
+	}, 
+	"gems_cost_now": { 
+		"message": "400 gems cost $PRICE$ now.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	}, 
+	"gems_cost_your": { 
+		"message": "You've waited for $PRICE$ or lower.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	}, 
+	"stop_gem_notifications": { 
+		"message": "Don't send notifications about gems anymore" 
+	}, 
+	"gold_price_dropped_down": { 
+		"message": "Gold price dropped down" 
+	}, 
+	"gold_cost_now": { 
+		"message": "10 gold cost $PRICE$ gems now.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	}, 
+	"gold_cost_your": { 
+		"message": "You've waited for $PRICE$ gems or lower.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	}, 
+	"stop_gold_notifications": { 
+		"message": "Don't send notifications about gold anymore" 
+	}, 
+	"default_page": { 
+		"message": "Default page" 
+	}, 
+	"default_page_desc": { 
+		"message": "Select a page which will appear when you open the extension" 
+	}, 
+	"default_page_desc_after": { 
+		"message": "I recommend you to select \"Changelog\" to see latest changes and to improve the extension's loading speed." 
 	}
 }

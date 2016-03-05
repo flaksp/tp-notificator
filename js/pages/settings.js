@@ -1,33 +1,38 @@
 $("document").ready(function() {
 	parse_templare("#settings", "main");
-
-	chrome.storage.sync.get(function(sync_storage) {
-		// Load all API keys in <select> 
-		if (Object.size(sync_storage["access_token"]) > 0) {
-			$.each(sync_storage["access_token"], function(index, value) {
-				$("#current_api_key").find("select").append('<option value="' + index + '">' + value + '</option>');
-			});
-			
-			if (sync_storage["current_api_key"]) {
-				$("#current_api_key").find("option[value=" + sync_storage["current_api_key"] + "]").attr("selected", true);
+	
+	chrome.storage.local.get(function(local_storage) {
+		chrome.storage.sync.get(function(sync_storage) {
+			// Load all API keys in <select> 
+			if (Object.size(sync_storage["access_token"]) > 0) {
+				$.each(sync_storage["access_token"], function(index, value) {
+					$("#current_api_key").find("select").append('<option value="' + index + '">' + value + '</option>');
+				});
+				
+				if (local_storage["current_api_key"]) {
+					$("#current_api_key").find("option[value=" + local_storage["current_api_key"] + "]").attr("selected", true);
+				}
 			}
-		}
-		
-		// Graph tool
-		$("#graph_tool").find("option[value=" + sync_storage['settings']['graph_tool'] + "]").attr("selected", true);
-		
-		// Algorithm
-		$("#algorithm").find("input[value=" + sync_storage['settings']['algorithm'] + "]").attr("checked", true);
-		
-		// Item localization
-		$("#item_language").find("option[value=" + sync_storage['settings']['item_localization'] + "]").attr("selected", true);
-		
-		// Notifications
-		$("#sound").find("input").val(sync_storage['settings']['sound']);
+			
+			// Graph tool
+			$("#graph_tool").find("option[value=" + local_storage['graph_tool'] + "]").attr("selected", true);
+			
+			// Algorithm
+			$("#algorithm").find("input[value=" + local_storage['algorithm'] + "]").attr("checked", true);
+			
+			// Item localization
+			$("#item_language").find("option[value=" + local_storage['item_localization'] + "]").attr("selected", true);
+			
+			// Notifications
+			$("#sound").find("input").val(local_storage['sound']);
+			
+			// Default page
+			$("#default_page").find("option[value=" + local_storage['default_page'] + "]").attr("selected", true);
+		});
 	});
 });
 
-
+// Add API-key
 $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(event) {
 	event.preventDefault();
 	
@@ -55,18 +60,20 @@ $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(ev
 				chrome.storage.sync.get(function(sync_storage) {
 					sync_storage['access_token'][api_key] = data['name'];
 
-					chrome.storage.sync.set({"access_token": sync_storage['access_token'], "current_api_key": api_key}, function() {
-						$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_saved", [data['name']]) + '</div>');
-					
-						if ($("#current_api_key").find("option[value=" + api_key + "]").length > 0) {
-							$("#current_api_key").find("option[value=" + api_key + "]").html(data['name']);
-						}
-						else {
-							$("#current_api_key select").append('<option value="' + api_key + '">' + data['name'] + '</option>');
-						}
+					chrome.storage.local.set({"current_api_key": api_key}, function() {
+						chrome.storage.sync.set({"access_token": sync_storage['access_token']}, function() {
+							$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_saved", [data['name']]) + '</div>');
 						
-						$("#current_api_key").find("option[selected]").removeAttr("selected");
-						$("#current_api_key").find("option[value=" + api_key + "]").attr("selected", true);
+							if ($("#current_api_key").find("option[value=" + api_key + "]").length > 0) {
+								$("#current_api_key").find("option[value=" + api_key + "]").html(data['name']);
+							}
+							else {
+								$("#current_api_key select").append('<option value="' + api_key + '">' + data['name'] + '</option>');
+							}
+							
+							$("#current_api_key").find("option[selected]").removeAttr("selected");
+							$("#current_api_key").find("option[value=" + api_key + "]").attr("selected", true);
+						});
 					});
 				});
 			}
@@ -116,19 +123,21 @@ $(document).off("click", "#remove_selected").on("click", "#remove_selected", fun
 	}
 
 	chrome.storage.sync.get(function(sync_storage) {
-		if (sync_storage['current_api_key'] == $("#current_api_key select").find("option:selected").attr("value")) {
-			$("#current_api_key").find(".js-notifications").append('<div class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("cannot_remove_current_key") + '</div>');
+		chrome.storage.local.get(function(local_storage) {
+			if (local_storage['current_api_key'] == $("#current_api_key select").find("option:selected").attr("value")) {
+				$("#current_api_key").find(".js-notifications").append('<div class="alert alert-danger alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("cannot_remove_current_key") + '</div>');
+				
+				return;
+			}
 			
-			return;
-		}
-		
-		delete sync_storage['access_token'][$("#current_api_key select").find("option:selected").attr("value")];
-		
-		chrome.storage.sync.set({"access_token": sync_storage['access_token']}, function() {
-			$("#current_api_key").find(".js-notifications").append('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_removed", [$("#current_api_key select").find("option:selected").text()]) + '</div>');
+			delete sync_storage['access_token'][$("#current_api_key select").find("option:selected").attr("value")];
 			
-			$("#current_api_key select").find("option:selected").remove();
-			$("#current_api_key").find("option[value=" + sync_storage['current_api_key'] + "]").attr("selected", true);
+			chrome.storage.sync.set({"access_token": sync_storage['access_token']}, function() {
+				$("#current_api_key").find(".js-notifications").append('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_removed", [$("#current_api_key select").find("option:selected").text()]) + '</div>');
+				
+				$("#current_api_key select").find("option:selected").remove();
+				$("#current_api_key").find("option[value=" + local_storage['current_api_key'] + "]").attr("selected", true);
+			});
 		});
 	});
 });
@@ -141,19 +150,20 @@ $(document).off("click", "#use_selected").on("click", "#use_selected", function(
 		return;
 	}
 
-	chrome.storage.sync.get(function(sync_storage) {
-		if (sync_storage['current_api_key'] == $("#current_api_key select").find("option:selected").attr("value")) {
+	chrome.storage.local.get(function(local_storage) {
+		if (local_storage['current_api_key'] == $("#current_api_key select").find("option:selected").attr("value")) {
 			$("#current_api_key").find(".js-notifications").append('<div class="alert alert-warning alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("you_are_using_this_key") + '</div>');
 			
 			return;
 		}
 		
-		chrome.storage.sync.set({"current_api_key": $("#current_api_key select").find("option:selected").attr("value")}, function() {
+		chrome.storage.local.set({"current_api_key": $("#current_api_key select").find("option:selected").attr("value")}, function() {
 			$("#current_api_key").find(".js-notifications").append('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("api_key_switched", [$("#current_api_key select").find("option:selected").text()]) + '</div>');
 		});
 	});
 });
 
+// Select graph tool
 $("body").off("submit", "#graph_tool").on("submit", "#graph_tool", function(event) {
 	event.preventDefault();
 	
@@ -161,15 +171,13 @@ $("body").off("submit", "#graph_tool").on("submit", "#graph_tool", function(even
 	
 	var graph_tool = $(el).find("option:selected").val();
 	
-	chrome.storage.sync.get(function(sync_storage) {		
-		sync_storage['settings']['graph_tool'] = graph_tool;
-		
-		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
-			$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("graph_tool_changed") + '</div>');
-		});
-	});	
+
+	chrome.storage.local.set({"graph_tool": parseInt(graph_tool)}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("graph_tool_changed") + '</div>');
+	});
 });
 
+// Select item language
 $("body").off("submit", "#item_language").on("submit", "#item_language", function(event) {
 	event.preventDefault();
 	
@@ -177,33 +185,25 @@ $("body").off("submit", "#item_language").on("submit", "#item_language", functio
 	
 	var item_language = $(el).find("option:selected").val();
 	
-	chrome.storage.sync.get(function(sync_storage) {		
-		sync_storage['settings']['item_localization'] = item_language;
-		
-		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
-			$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("items_language_changed") + '</div>');
-		});
-	});	
+	chrome.storage.local.set({"item_localization": item_language}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("items_language_changed") + '</div>');
+	});
 });
 
+// Select algorithm
 $("body").off("submit", "#algorithm").on("submit", "#algorithm", function(event) {
 	event.preventDefault();
 	
 	var el = $(this);
 	
 	var algorithm = $(el).find("input:checked").val();
-	
-	chrome.storage.sync.get(function(sync_storage) {
-		sync_storage['settings']['algorithm'] = algorithm;
-		
-		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {
-			chrome.storage.local.set({"historical_bought": [], "historical_sold": [], "buying_track_list": {}, "selling_track_list": {}}, function() {
-				$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("algorithm_changed") + '</div>');
-			});
-		});
+
+	chrome.storage.local.set({"algorithm": parseInt(algorithm), "historical_bought": [], "historical_sold": [], "buying_track_list": {}, "selling_track_list": {}}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("algorithm_changed") + '</div>');
 	});	
 });
 
+// Select sound volume
 $("body").off("submit", "#sound").on("submit", "#sound", function(event) {
 	event.preventDefault();
 	
@@ -211,11 +211,20 @@ $("body").off("submit", "#sound").on("submit", "#sound", function(event) {
 	
 	var sound = $(el).find("input").val();
 	
-	chrome.storage.sync.get(function(sync_storage) {
-		sync_storage['settings']['sound'] = sound;
-		
-		chrome.storage.sync.set({"settings": sync_storage['settings']}, function() {			
-			$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("sound_changed") + '</div>');
-		});
-	});	
+	chrome.storage.local.set({"sound": parseFloat(sound)}, function() {			
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("sound_changed") + '</div>');
+	});
+});
+
+// Select default page
+$("body").off("submit", "#default_page").on("submit", "#default_page", function(event) {
+	event.preventDefault();
+	
+	var el = $(this);
+	
+	var default_page = $(el).find("option:selected").val();
+
+	chrome.storage.local.set({"default_page": default_page}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("changes_saved") + '</div>');
+	});
 });

@@ -17,7 +17,9 @@ window.onload = function() {
 	
 	parse_templare("#main", "#content");
 	
-	load_page("buying");
+	chrome.storage.local.get(function(local_storage) {
+		load_page(local_storage['default_page']);
+	});
 	
 	// Local pages
 	$(document).on("click", ".local-page", function() {		
@@ -32,10 +34,8 @@ window.onload = function() {
 
 	$(document).on('close.bs.alert', '#vote_reminder_alert', function () {
 		chrome.storage.sync.get(function(sync_storage) {
-			if (sync_storage['metadata']['vote_remind'] === false) {
-				sync_storage['metadata']['vote_remind'] = true;
-				
-				chrome.storage.sync.set({"metadata": sync_storage['metadata']}, function() {
+			if (sync_storage['vote_remind'] === false) {				
+				chrome.storage.sync.set({"vote_remind": true}, function() {
 					console.log("Notification hidden forever.");
 				});
 			}

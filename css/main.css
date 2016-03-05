@@ -205,3 +205,5 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 	margin: 0 3px;
 	background-size: contain;
 }
+
+.form-control:invalid:focus { border-color: #d9534f; }

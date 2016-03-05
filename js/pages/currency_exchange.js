@@ -1,6 +1,17 @@
 $("document").ready(function() {
 	parse_templare("#currency_exchange", "main");
 	
+	chrome.storage.local.get(function(local_storage) {
+		if (local_storage['graph_tool'] > 0) {
+			$("h1").append('<a class="pull-xs-right" href="' + create_graph_gem_url(local_storage['graph_tool']) + '" title="' + chrome.i18n.getMessage("open_graph_tool") + '"><span class="fa fa-area-chart"></span></a>');
+		}
+	});
+	
+	chrome.storage.local.get(function(local_storage) {
+		$("#set-gem-price").val(local_storage['notify_for_400_gems']);
+		$("#set-gold-price").val(local_storage['notify_for_10_gold']);
+	});
+	
 	$.ajax({
 		type: 'GET',
 		url: 'https://api.guildwars2.com/v2/commerce/exchange/coins?quantity=1000000',
@@ -28,7 +39,7 @@ $("document").ready(function() {
 				$("#gems-400-buy, #gems-800-buy, #gems-1200-buy, #gems-2000-buy").html('<span class="text-danger">' + chrome.i18n.getMessage("connection_timeout") + '</span>');
 			}
 			else if (x['responseJSON'] && x['responseJSON']['text']) {
-				$("#gems-400-buy, #gems-800-buy, #gems-1200-buy, #gems-2000-buy").html('<span class="text-danger text-fl-uppercase">' + x ['responseJSON']['text'] + '.</span>');
+				$("#gems-400-buy, #gems-800-buy, #gems-1200-buy, #gems-2000-buy").html('<span class="text-danger text-fl-uppercase">' + x['responseJSON']['text'] + '.</span>');
 			}
 			else {
 				$("#gems-400-buy, #gems-800-buy, #gems-1200-buy, #gems-2000-buy").html('<span class="text-danger">' + chrome.i18n.getMessage("unknown_error") + '</span>');
@@ -83,12 +94,34 @@ $("document").ready(function() {
 				$("#gold-10-buy, #gold-50-buy, #gold-100-buy, #gold-250-buy").html('<span class="text-danger">' + chrome.i18n.getMessage("connection_timeout") + '</span>');
 			}
 			else if (x['responseJSON'] && x['responseJSON']['text']) {
-				$("#gold-10-buy, #gold-50-buy, #gold-100-buy, #gold-250-buy").html('<span class="text-danger text-fl-uppercase">' + x ['responseJSON']['text'] + '.</span>');
+				$("#gold-10-buy, #gold-50-buy, #gold-100-buy, #gold-250-buy").html('<span class="text-danger text-fl-uppercase">' + x['responseJSON']['text'] + '.</span>');
 			}
 			else {
 				$("#gold-10-buy, #gold-50-buy, #gold-100-buy, #gold-250-buy").html('<span class="text-danger">' + chrome.i18n.getMessage("unknown_error") + '</span>');
 			}
 		}
 	});
-
 });
+
+$("body").off("submit", "#set-gem-price-form").on("submit", "#set-gem-price-form", function(event) {
+	event.preventDefault();
+	
+	var el = $(this);
+	var amount = $("#set-gem-price").val();
+	
+	chrome.storage.local.set({"notify_for_400_gems": parseInt(amount)}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("changes_saved") + '</div>');
+	});	
+});
+
+$("body").off("submit", "#set-gold-price-form").on("submit", "#set-gold-price-form", function(event) {
+	event.preventDefault();
+	
+	var el = $(this);
+	var amount = $("#set-gold-price").val();
+
+	chrome.storage.local.set({"notify_for_10_gold": parseInt(amount)}, function() {
+		$(el).find(".js-notifications").prepend('<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + chrome.i18n.getMessage("changes_saved") + '</div>');
+	});	
+});
+

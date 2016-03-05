@@ -22,9 +22,7 @@ $("document").ready(function() {
 		$('#readable_sync_storage').html(JSON.stringify(sync_storage, null, 3));
 		
 		// Date installation
-		if (sync_storage['metadata']['install_date']) {
-			$("#installed").text(chrome.i18n.getMessage("installed") + " " + time_ago(sync_storage['metadata']['install_date']) + " " + chrome.i18n.getMessage("ago"));
-		}
+		$("#installed").text(chrome.i18n.getMessage("installed") + " " + time_ago(sync_storage['install_date']) + " " + chrome.i18n.getMessage("ago"));
 	});
 	
 	chrome.storage.local.get(function(local_storage) {
@@ -56,8 +54,8 @@ $("document").ready(function() {
 	});
 	
 	// Permissions
-	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['current_api_key']) {
+	chrome.storage.local.get(function(local_storage) {
+		if (!local_storage['current_api_key']) {
 			$("#permissions").text(chrome.i18n.getMessage("didnt_select_api_key"));
 		}
 		else {
@@ -67,7 +65,7 @@ $("document").ready(function() {
 				type: 'GET',
 				url: 'https://api.guildwars2.com/v2/tokeninfo',
 				dataType: "json",
-				headers: {"Authorization": "Bearer " + sync_storage['current_api_key']},
+				headers: {"Authorization": "Bearer " + local_storage['current_api_key']},
 				timeout: 10000,
 				tryCount: 0,
 				retryLimit: 3,
@@ -92,7 +90,7 @@ $("document").ready(function() {
 						$("#permissions").html('<span class="text-danger">' + chrome.i18n.getMessage("connection_timeout") + '</span>');
 					}
 					else if (x['responseJSON'] && x['responseJSON']['text']) {
-						$("#permissions").html('<span class="text-danger text-fl-uppercase">' + x ['responseJSON']['text'] + '.</span>');
+						$("#permissions").html('<span class="text-danger text-fl-uppercase">' + x['responseJSON']['text'] + '.</span>');
 					}
 					else {
 						$("#permissions").html('<span class="text-danger">' + chrome.i18n.getMessage("unknown_error") + '</span>');

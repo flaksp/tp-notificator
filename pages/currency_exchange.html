@@ -40,6 +40,19 @@
 		</div>
 	</div>
 	
+	<form class="form-group" id="set-gem-price-form">
+		<label for="set-gem-price">{{loc 'notify_400_gems'}}</label>			
+		<div class="input-group">
+			<input type="number" class="form-control" id="set-gem-price" pattern="\d+" required>
+			<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit">{{loc 'save'}}</button>
+			</span>
+		</div>
+		<small class="text-muted">{{loc 'set_zero_to_disable'}}. {{loc 'copper_calculating_notify'}}</small>
+		
+		<div class="js-notifications m-t-1"></div>
+	</form>
+	
 	<hr>
 	
 	<div class="row">
@@ -80,6 +93,19 @@
 			</ul>
 		</div>
 	</div>
+	
+	<form class="form-group m-b-0" id="set-gold-price-form">
+		<label for="set-gold-price">{{loc 'notify_10_gold'}}</label>			
+		<div class="input-group">
+			<input type="number" class="form-control" id="set-gold-price" pattern="\d+" required>
+			<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit">{{loc 'save'}}</button>
+			</span>
+		</div>
+		<small class="text-muted">{{loc 'set_zero_to_disable'}}.</small>
+		
+		<div class="js-notifications m-t-1"></div>
+	</form>
 </script>
 
 <script defer src="/js/pages/currency_exchange.js"></script>

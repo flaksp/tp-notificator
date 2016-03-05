@@ -1,6 +1,6 @@
 $("document").ready(function() {
-	chrome.storage.sync.get(function(sync_storage) {
-		if (!sync_storage['current_api_key']) {
+	chrome.storage.local.get(function(local_storage) {
+		if (!local_storage['current_api_key']) {
 			$("#listing").html('<div class="fluid-vp-wrapper"><div class="text-xs-center">' + chrome.i18n.getMessage("enter_api_key_first") + '</div></div>');
 			
 			return;
@@ -13,7 +13,7 @@ $("document").ready(function() {
 			url: 'https://api.guildwars2.com/v2/commerce/transactions/history/sells',
 			data: {"page_size": 200},
 			dataType: "json",
-			headers: {"Authorization": "Bearer " + sync_storage['current_api_key']},
+			headers: {"Authorization": "Bearer " + local_storage['current_api_key']},
 			timeout: 10000,
 			tryCount: 0,
 			retryLimit: 3,
@@ -92,7 +92,7 @@ $("document").ready(function() {
 				// Calcuating total profit
 				deep_ajax_load({
 					"url": 'https://api.guildwars2.com/v2/commerce/transactions/history/sells',
-					"api_key": sync_storage['current_api_key'],
+					"api_key": local_storage['current_api_key'],
 					"local_page": "sold",
 					"api_page": 0
 				}, function(stat, data) {
@@ -173,13 +173,11 @@ $("document").ready(function() {
 
 // Load icons, rarity item names 
 function load_metadata(item_ids) {
-	chrome.storage.sync.get(function(sync_storage) {
-		var language = sync_storage['settings']['item_localization'];
-		
+	chrome.storage.local.get(function(local_storage) {
 		$.ajax({
 			type: 'GET',
 			url: 'https://api.guildwars2.com/v2/items',
-			data: {"ids": item_ids, "lang": language},
+			data: {"ids": item_ids, "lang": local_storage['item_localization']},
 			dataType: "json",
 			cache: true,
 			timeout: 10000,
