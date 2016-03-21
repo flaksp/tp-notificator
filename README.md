@@ -5,16 +5,12 @@ Someone asked me to release extension on GitHub and I did so. I've never thought
 
 This extenstion uses [jQuery](https://jquery.com/) 2.2.1, [Bootstrap](http://getbootstrap.com/) 4.0.0 alpha 2, [Handlebars](http://handlebarsjs.com/) 4.0.5 and [Font Awesome](https://fortawesome.github.io/Font-Awesome/) 4.5.0.
 
-## Latest release - 1.4.0.0 - March 5, 2016
+## Latest release - 1.4.1.0 - March 21, 2016
 ### Enhancements
-* You can get notifications when gems or gold exchange rates are profitable for you.
-* Added a link to graphs for gem exchange rate. Works only if you've selected any graph tool in your settings.
-* Settings are not syncing between Chrome accounts and browsers anymore. Every browser can get personal settings now. But API-keys are still syncing.
-* Added a new option which allows you to define a default page which will appear when you open the extension.
-* Optimization improvements.
-* Updated jQuery to 2.2.1.
+* Removed a button from exchange rate notifications which stopped those notifications. You can stop notifications by pressing × button now.
 
 ### Fixes
-* Minor bugfixes.
+* Fixed a bug when the extension window blinks after you switch between tabs too often.
+* Fixed a bug with gem price notifications.
 
 Check out previuos releases at [releases](https://github.com/terron-kun/tp-notificator/releases) page.

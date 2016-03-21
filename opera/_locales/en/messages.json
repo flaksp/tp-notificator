@@ -1,0 +1,545 @@
+﻿{
+	"locale": {
+		"message": "en"
+	},
+	"buying_list": {
+		"message": "Buying list"
+	},
+	"selling_list": {
+		"message": "Selling list"
+	},
+	"settings": {
+		"message": "Settings"
+	},
+	"faq": {
+		"message": "FAQ"
+	},
+	"contacts": {
+		"message": "Contacts"
+	},
+	"add": {
+		"message": "Add"
+	},
+	"api_key": {
+		"message": "API key"
+	},
+	"api_keys": {
+		"message": "API keys"
+	},
+	"what_is_it": {
+		"message": "what is this"
+	},
+	"api_key_will_be_default": {
+		"message": "Added API key will be used by default."
+	},
+	"select_api_key": {
+		"message": "Select API key"
+	},
+	"use_selected": {
+		"message": "Use selected"
+	},
+	"remove_selected": {
+		"message": "Remove selected"
+	},
+	"key_permissions": {
+		"message": "Current API key permissions"
+	},
+	"loading": {
+		"message": "Loading..."
+	},
+	"reset_warning": {
+		"message": "This option will reset all your settings and remove all your saved data (tracking lists, API keys etc). The extension will be closed after you reset all the data."
+	},
+	"reset_all": {
+		"message": "Reset all"
+	},
+	"select_graph": {
+		"message": "Select graph tool"
+	},
+	"link_to_graph": {
+		"message": "Link to graph tool"
+	},
+	"dont_display_any_graph": {
+		"message": "Don't display any graph tool link"
+	},
+	"storage_usage": {
+		"message": "Sync storage"
+	},
+	"item_count_debug": {
+		"message": "Element count"
+	},
+	"local_storage_usage": {
+		"message": "Local storage"
+	},
+	"last_error_occured": {
+		"message": "Extension last error occured"
+	},
+	"no_error": {
+		"message": "There is no error."
+	},
+	"api_key_saved": {
+		"message": "API key \"$API_KEY$\" has been succesfully saved.",
+		"placeholders": {
+			"api_key": {
+				"content": "$1"
+			}
+		}
+	},
+	"error": {
+		"message": "Error"
+	},
+	"connection_timeout": {
+		"message": "Connection timeout."
+	},
+	"unknown_error_try_again": {
+		"message": "Unknown error occured. Please try again."
+	},
+	"unknown_error": {
+		"message": "Unknown error occured."
+	},
+	"didnt_select_api_key": {
+		"message": "You didn't select any API key."
+	},
+	"select_api_key_to_use": {
+		"message": "Please select API key to use."
+	},
+	"select_api_key_to_remove": {
+		"message": "Please select API key to remove."
+	},
+	"cannot_remove_current_key": {
+		"message": "You cannot remove API key you are using right now."
+	},
+	"you_are_using_this_key": {
+		"message": "You are using this API key right now."
+	},
+	"api_key_switched": {
+		"message": "API key has been successfully switched to \"$API_KEY$\".",
+		"placeholders": {
+			"api_key": {
+				"content": "$1"
+			}
+		}
+	},
+	"enter_api_key_first": {
+		"message": "Please enter API key with \"tradingpost\" permission on <a class='local-page' data-page='settings'>settings page</a> to see your trading post transactions. If you don't know what is API key you can read about it in <a class='local-page' data-page='faq/access_token'>FAQ</a>."
+	},
+	"no_selling_transactions": {
+		"message": "You are not selling any items right now."
+	},
+	"items": {
+		"message": "items"
+	},
+	"notify_when_sold": {
+		"message": "Let me know when this item will be sold"
+	},
+	"open_graph_tool": {
+		"message": "Open graph tool"
+	},
+	"results_are_cached": {
+		"message": "The results are cached for a few minutes. Updated $TIME$ ago.",
+		"placeholders": {
+			"time": {
+				"content": "$1"
+			}
+		}
+	},
+	"timeout_error_reload": {
+		"message": "Timeout error occured while trying to receive information about your transactions. Please <a class='local-page' data-page='$PAGE$'>reload</a> this page to try again.",
+		"placeholders": {
+			"page": {
+				"content": "$1"
+			}
+		}
+	},
+	"unknown_error_reload": {
+		"message": "Unknown error occured while trying to load information about your transactions. Please <a class='local-page' data-page='$PAGE$'>reload</a> this page to try again.",
+		"placeholders": {
+			"page": {
+				"content": "$1"
+			}
+		}
+	},
+	"timeout_error_metadata": {
+		"message": "Timeout error occured while trying to recieve item metadata."
+	},
+	"unknown_error_metadata": {
+		"message": "Unknown error occured while trying to load item metadata. Please <a class='local-page alert-link' data-page='$PAGE$'>reload</a> this page to try again.",
+		"placeholders": {
+			"page": {
+				"content": "$1"
+			}
+		}
+	},
+	"item_sold": {
+		"message": "You've sold an item at TP"
+	},
+	"item_bought": {
+		"message": "You've bought an item at TP"
+	},
+	"profit": {
+		"message": "Profit: $PROFIT$",
+		"placeholders": {
+			"profit": {
+				"content": "$1"
+			}
+		}
+	},
+	"no_buying_transactions": {
+		"message": "You are not buying any items right now."
+	},
+	"notify_when_bought": {
+		"message": "Let me know when this item will be bought"
+	},
+	"tradingpost_required": {
+		"message": "Your API key must have \"tradingpost\" permission."
+	},
+	"contacts_my_coordinates": {
+		"message": "My coordinates (russian and english):"
+	},
+	"contacts_ingame": {
+		"message": "Ingame"
+	},
+	"contacts_vk": {
+		"message": "VK"
+	},
+	"contacts_valenok": {
+		"message": "This is my mate who helped me to fix some grammar mistakes because my english sucks. You can contact her too (russian and english):"
+	},
+	"faq_access_token": {
+		"message": "What is API key (a.k.a access token)?"
+	},
+	"faq_question_access_token": {
+		"message": "API keys are a way to grant third-party tools and applications partial read-only access to your Guild Wars 2 account. To use this extension you should create API key at <a href='https://account.arena.net/applications'>account.arena.net/applications</a> with \"tradingpost\" permission and enter it at settings page."
+	},
+	"faq_how_it_works": {
+		"message": "How does this extension work?"
+	},
+	"faq_question_how_it_works": {
+		"message": "This extension uses <a href='https://wiki.guildwars2.com/wiki/API'>official Guild Wars 2 API</a> to retrieve information about your trading post transactions. You can track specific items you are waiting to buy or sell — just press the eye button and extension will notify you when this item will be sold or bought. Due to Guild Wars 2 API isn't rich enough it's hard to check the fact of selling an item so you will receive selling/buying notification even if the tracked item will be removed from your transaction list by yourself. Also your transaction list in the extension refreshes every 5 minutes because of Guild Wars 2 API restrictions, so you may wait up to 5 minutes to get the latest information."
+	},
+	"faq_is_it_safe": {
+		"message": "Is this extension safe for my account?"
+	},
+	"faq_question_is_it_safe": {
+		"message": "Yes, using applications based on official Guild Wars 2 API is safe for your account because official API provides only read-only access to not intimate information. For example, application developers can't get your email, serial number, password and other stuff. Make sure that this extension doesn't connect to any of my servers and it's fully working with Guild Wars 2 API without third-party servers. You can check it by pressing \"Details\" link on <code>chrome://extensions/</code> (copy and paste to address bar) page."
+	},
+	"faq_is_it_legal": {
+		"message": "Is this extension legal to use?"
+	},
+	"faq_question_is_it_legal": {
+		"message": "Yes, you don't violate the rules of the Guild Wars 2 user agreement by using this browser extension."
+	},
+	"faq_release_ideas": {
+		"message": "Can you implement my ideas?"
+	},
+	"faq_question_release_ideas": {
+		"message": "If your idea is feasible, cool, and useful, then yes. Check out <a class='local-page' data-page='contacts'>contact page</a> for contact info."
+	},
+	"faq_localization": {
+		"message": "Is this extension available in other languages?"
+	},
+	"faq_question_localization": {
+		"message": "This extension is only available in russian and english now. To switch the language you should change browser's language in Opera settings. If you know any language very well and if you want to support this extension in the future (for example if I'll add new options) you can <a class='local-page' data-page='contacts'>contact me</a>."
+	},
+	"faq_browsers": {
+		"message": "Is this extension available for any other browsers?"
+	},
+	"faq_unknown_error": {
+		"message": "Why do I get random \"unknown error\" errors?"
+	},
+	"faq_question_unknown_error": {
+		"message": "I don't know why this shit happens. Issue isn't in my code. Looks like it's the impact of the anti-virus or Guild Wars 2 servers' issue."
+	},
+	"faq_dont_refresh_oftenly": {
+		"message": "Looks like the extension doesn't working for me anymore. Why?"
+	},
+	"faq_question_dont_refresh_oftenly": {
+		"message": "It's probably because you are saving data too often. Opera doesn't allow more than 120 saving operations per minute and more than 1800 operations per hour. Each action (selling/buying item, saving settings, starting tracking item) is one operation. I can't do anything with it. Please do these operations less often. If the problem isn't in the frequency of the operations, check out storage usage at <a class='local-page' data-page='debug'>debug page</a>. If it's full reset all data in <a class='local-page' data-page='settings'>settings</a>."
+	},
+	"back_to_questions": {
+		"message": "back to questions"
+	},
+	"read_also": {
+		"message": "See also"
+	},
+	"debug_page": {
+		"message": "Debug page"
+	},
+	"readable_local_storage": {
+		"message": "Local storage data"
+	},
+	"app_description": {
+		"message": "Track your auction buying and selling orders and get notifications when you sold or bought anything."
+	},
+	"all": {
+		"message": "all"
+	},
+	"reset_alarm": {
+		"message": "Reset all loop timers"
+	},
+	"reset_alarm_warn": {
+		"message": "This option resets all loop timers that check for status of your transactions. The extension will be closed after the reset. <span class='text-danger'>Don't use this function if you don't understand what it does.</span>"
+	},
+	"timers_data": {
+		"message": "Timers data"
+	},
+	"loc_page_not_found": {
+		"message": "Local page \"$PAGE$\" not found.",
+		"placeholders": {
+			"page": {
+				"content": "$1"
+			}
+		}
+	},
+	"secs": {
+		"message": "sec."
+	},
+	"mins": {
+		"message": "min."
+	},
+	"hours": {
+		"message": "h."
+	},
+	"days": {
+		"message": "d."
+	},
+	"ago": {
+		"message": "ago"
+	},
+	"bytes": {
+		"message": "bytes"
+	},
+	"changelog": {
+		"message": "Changelog & News"
+	},
+	"january": {
+		"message": "January"
+	},
+	"february": {
+		"message": "February"
+	},
+	"march": {
+		"message": "March"
+	},
+	"april": {
+		"message": "April"
+	},
+	"may": {
+		"message": "May"
+	},
+	"june": {
+		"message": "June"
+	},
+	"july": {
+		"message": "July"
+	},
+	"august": {
+		"message": "August"
+	},
+	"september": {
+		"message": "September"
+	},
+	"october": {
+		"message": "October"
+	},
+	"november": {
+		"message": "November"
+	},
+	"december": {
+		"message": "December"
+	},
+	"cl_1_4_1_0": {
+		"message": "<li>Extension release.</li>"
+	},
+	"track_all": {
+		"message": "Track all"
+	},
+	"untrack_all": {
+		"message": "Untrack all"
+	},
+	"no_selling_history": {
+		"message": "Your selling history is empty."
+	},
+	"no_buying_history": {
+		"message": "Your buying history is empty."
+	},
+	"selling_history": {
+		"message": "Selling history"
+	},
+	"buying_history": {
+		"message": "Buying history"
+	},
+	"number_results": {
+		"message": "$ITEM_CURRENT$ of $ITEM_TOTAL$ items are showed.",
+		"placeholders": {
+			"item_current": {
+				"content": "$1"
+			},
+			"item_total": {
+				"content": "$2"
+			}
+		}
+	},
+	"timeout_error_price_range": {
+		"message": "Timeout error occured while trying to receive price range information."
+	},
+	"unknown_error_price_range": {
+		"message": "Unknown error occured while trying to receive price range information. Please <a class='local-page alert-link' data-page='$PAGE$'>reload</a> this page to try again.",
+		"placeholders": {
+			"page": {
+				"content": "$1"
+			}
+		}
+	},
+	"price_difference_sell": {
+		"message": "The difference between your and best seller's price"
+	},
+	"price_difference_buy": {
+		"message": "The difference between your and best buyer's price"
+	},
+	"js_errors": {
+		"message": "JavaScript error log"
+	},
+	"algorithm": {
+		"message": "Algorithm"
+	},
+	"save": {
+		"message": "Save"
+	},
+	"algorithm_1": {
+		"message": "The extension will notify you about only items you are tracking right now"
+	},
+	"algorithm_2": {
+		"message": "The extension will notify you about every sold and bought item"
+	},
+	"faq_algorithm": {
+		"message": "What's the difference between the so-called algorithms?"
+	},
+	"faq_question_algorithm": {
+		"message": "<p>That's a good question, read this properly too make the right choice.</p><b>First algorithm:</b><p>You will receive notifications only about the currently tracked items, so notifications won't disturb you much. The problem is that you will receive notifications even if you remove your order from trading post.</p><b>Second algorithm:</b><p>You receive notifications about every successful transaction. The problem is you will receive notifications even if you buy or sell an item without order.</p>"
+	},
+	"sound": {
+		"message": "Volume of notifications"
+	},
+	"sound_setting": {
+		"message": "Recommended volume is 10%."
+	},
+	"vote_reminder": {
+		"message": "<strong>Holy quaggan!</strong> Looks like you're like this extension (I hope) so I want to beg you rate this extension at <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk' class='alert-link'>Opera store page</a>. But if you're lazy to do it you can just hide this notification. Thank you."
+	},
+	"installed": {
+		"message": "Installed"
+	},
+	"algorithm_3": { 
+		"message": "The extension will notify you only about every sold item and about items you are buying and tracking right now" 
+	}, 
+	"algorithm_4": { 
+		"message": "The extension will notify you only about every bought item and about items you are selling and tracking right now" 
+	}, 
+	"items_language": { 
+		"message": "Item localization" 
+	}, 
+	"select_items_language": { 
+		"message": "Select a language which will be used to display item names" 
+	}, 
+	"english": { 
+		"message": "English" 
+	}, 
+	"french": { 
+		"message": "French" 
+	}, 
+	"german": { 
+		"message": "German" 
+	}, 
+	"spanish": { 
+		"message": "Spanish" 
+	}, 
+	"thanks": { 
+		"message": "Thanks" 
+	},
+	"thanks_content": {
+		"message": "<li>To <a href='http://guildwars-2.ru/'>guildwars-2.ru</a> (russian Guild Wars 2 community) for being told about this extension.</li>"
+	},
+	"in_plans": {
+		"message": "Planned for the future, however the development won't start until the Chromium version is polished thoroughly."
+	},
+	"contacts_introduction": {
+		"message": "This is my first browser extension I made not for personal use so don't be too harsh — better contact me and tell about a bug or suggest an idea. I won't ignore anyone and will answer as fast as I read the message. Or you can create an issue on <a href='https://github.com/terron-kun/tp-notificator'>GitHub</a>."
+	},
+	"chromium_based": {
+		"message": "Chromium-based browsers: Google Chrome, Google Chrome Canary"
+	},
+	"firefox_based": {
+		"message": "Firefox-based browsers: Mozilla Firefox, Tor Browser"
+	},
+	"profit_from_all_transactions": {
+		"message": "Total profit"
+	},
+	"spent_to_all_transactions": {
+		"message": "Total costs"
+	},
+	"currency_exchange": {
+		"message": "Currency exchange"
+	},
+	"cost": {
+		"message": "cost"
+	},
+	"notify_400_gems": { 
+		"message": "Notify when 400 gems cost less than this amount of copper" 
+	}, 
+	"copper_calculating_notify": { 
+		"message": "100 copper = 1 silver; 10000 copper = 1 gold." 
+	}, 
+	"notify_10_gold": { 
+		"message": "Notify when 10 gold cost less than this amount of gems" 
+	}, 
+	"set_zero_to_disable": { 
+		"message": "Set <code>0</code> to disable tracking" 
+	}, 
+	"changes_saved": { 
+		"message": "Changes have been successfully saved." 
+	}, 
+	"gem_price_dropped_down": { 
+		"message": "Gem price dropped down" 
+	}, 
+	"gems_cost_now": { 
+		"message": "400 gems cost $PRICE$ now.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	}, 
+	"gold_price_dropped_down": { 
+		"message": "Gold price dropped down" 
+	}, 
+	"gold_cost_now": { 
+		"message": "10 gold cost $PRICE$ gems now.", 
+		"placeholders": { 
+			"price": { 
+				"content": "$1" 
+			} 
+		} 
+	},
+	"default_page": { 
+		"message": "Default page" 
+	}, 
+	"default_page_desc": { 
+		"message": "Select a page which will appear when you open the extension" 
+	}, 
+	"default_page_desc_after": { 
+		"message": "I recommend you to select \"Changelog & News\" to see latest changes and to improve the extension's loading speed." 
+	},
+	"opera_based": { 
+		"message": "Opera 15+" 
+	}, 
+	"synchronizable_storage": { 
+		"message": "Synchronizable storage" 
+	}, 
+	"windows_native_notifications": { 
+		"message": "Notifications via Windows 8 & 10 notification center"
+	}, 
+	"press_x_button_to_stop": { 
+		"message": "Note: you can press &times; button on a notification to stop them." 
+	}
+}
