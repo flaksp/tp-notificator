@@ -1,6 +1,6 @@
 chrome.alarms.create("buying_alarm", {"periodInMinutes": 1});
 chrome.alarms.create("selling_alarm", {"periodInMinutes": 1});
-chrome.alarms.create("exchange_rate", {"periodInMinutes": 1});
+chrome.alarms.create("exchange_rate", {"periodInMinutes": 5});
 
 chrome.alarms.onAlarm.addListener(function(alarm) {
 	chrome.notifications.getAll(function(notifies) {

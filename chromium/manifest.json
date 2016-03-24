@@ -1,8 +1,8 @@
 {
 	"manifest_version": 2,
 	"name": "Guild Wars 2™ Trading Post Notificator",
-	"version": "1.4.1.0",
-	"version_name": "1.4.1.0",
+	"version": "1.4.1.1",
+	"version_name": "1.4.1.1",
 	"author": "terron",
 	"homepage_url": "https://github.com/terron-kun/tp-notificator",
 	"description": "__MSG_app_description__",

@@ -541,5 +541,8 @@
 	}, 
 	"press_x_button_to_stop": { 
 		"message": "Note: you can press &times; button on a notification to stop them." 
+	},
+	"cl_1_4_1_1": { 
+		"message": "<li>Fixed a bug with gem price notifications.</li>" 
 	}
 }

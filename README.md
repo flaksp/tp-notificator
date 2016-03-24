@@ -5,12 +5,8 @@ Someone asked me to release extension on GitHub and I did so. I've never thought
 
 This extenstion uses [jQuery](https://jquery.com/) 2.2.1, [Bootstrap](http://getbootstrap.com/) 4.0.0 alpha 2, [Handlebars](http://handlebarsjs.com/) 4.0.5 and [Font Awesome](https://fortawesome.github.io/Font-Awesome/) 4.5.0.
 
-## Latest release - 1.4.1.0 - March 21, 2016
-### Enhancements
-* Removed a button from exchange rate notifications which stopped those notifications. You can stop notifications by pressing × button now.
-
+## Latest release - 1.4.1.1 - March 24, 2016
 ### Fixes
-* Fixed a bug when the extension window blinks after you switch between tabs too often.
-* Fixed a bug with gem price notifications.
+* Fixed a bug with gem price notifications (again).
 
 Check out previuos releases at [releases](https://github.com/terron-kun/tp-notificator/releases) page.

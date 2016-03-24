@@ -15,7 +15,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				success: function(data, textStatus, XMLHttpRequest) {
 					var current_price = Math.round(400 / data['quantity'] * 1000000);
 
-					if (local_storage['notify_for_400_gems'] <= current_price) {
+					if (local_storage['notify_for_400_gems'] >= current_price) {
 						chrome.notifications.create("notification_about_cheap_gems", {
 							type: "basic",
 							iconUrl: "/img/logo-359.png",
@@ -60,7 +60,7 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				success: function(data, textStatus, XMLHttpRequest) {
 					var current_price = Math.round(10 / data['quantity'] * 2000 * 10000);
 
-					if (local_storage['notify_for_10_gold'] <= current_price) {
+					if (local_storage['notify_for_10_gold'] >= current_price) {
 						chrome.notifications.create("notification_about_cheap_gold", {
 							type: "basic",
 							iconUrl: "/img/logo-359.png",
