@@ -425,7 +425,7 @@
 		"message": "Recommended volume is 10%."
 	},
 	"vote_reminder": {
-		"message": "<strong>Holy quaggan!</strong> Looks like you're like this extension (I hope) so I want to beg you rate this extension at <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk' class='alert-link'>Opera store page</a>. But if you're lazy to do it you can just hide this notification. Thank you."
+		"message": "<strong>Holy quaggan!</strong> Looks like you're like this extension (I hope) so I want to beg you rate this extension at <a href='https://addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/' class='alert-link'>Opera store page</a>. But if you're lazy to do it you can just hide this notification. Thank you."
 	},
 	"installed": {
 		"message": "Installed"
@@ -544,5 +544,8 @@
 	},
 	"cl_1_4_1_1": { 
 		"message": "<li>Fixed a bug with gem price notifications.</li>" 
+	},
+	"cl_1_4_1_2": { 
+		"message": "<li>Updated link to Opera store page at FAQ page.</li><li>Minor fixes.</li>" 
 	}
 }
