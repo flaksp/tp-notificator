@@ -1,0 +1,113 @@
+<script id="currency_exchange" type="text/x-handlebars-template">
+	<h1 class="h3 app-title">{{loc 'currency_exchange'}}</h1>
+	
+	<div class="row">
+		<div class="col-xs-3">
+			400 <span class="gem"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gems-400-buy">{{loc 'loading'}}</li>
+				<li>5$ / 5€</li>
+				<li>4.25£</li>
+				<li>350₽</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			800 <span class="gem"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gems-800-buy">{{loc 'loading'}}</li>
+				<li>10$ / 10€</li>
+				<li>8.50£</li>
+				<li>700₽</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			1200 <span class="gem"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gems-1200-buy">{{loc 'loading'}}</li>
+				<li>15$ / 15€</li>
+				<li>12.75£</li>
+				<li>1050₽</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			2000 <span class="gem"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gems-2000-buy">{{loc 'loading'}}</li>
+				<li>25$ / 25€</li>
+				<li>21.25£</li>
+				<li>1750₽</li>
+			</ul>
+		</div>
+	</div>
+	
+	<form class="form-group" id="set-gem-price-form">
+		<label for="set-gem-price">{{loc 'notify_400_gems'}}</label>			
+		<div class="input-group">
+			<input type="number" class="form-control" id="set-gem-price" pattern="\d+" min="0" required>
+			<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit">{{loc 'save'}}</button>
+			</span>
+		</div>
+		<small class="text-muted">{{loc 'set_zero_to_disable'}}. {{loc 'copper_calculating_notify'}}</small>
+		<div><small class="text-muted">{{loc 'press_x_button_to_stop'}}</small></div>
+		
+		<div class="js-notifications m-t-1"></div>
+	</form>
+	
+	<hr>
+	
+	<div class="row">
+		<div class="col-xs-3">
+			10 <span class="coin coin-gold"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gold-10-buy">{{loc 'loading'}}</li>
+				<li id="dollar-10-gold">{{loc 'loading'}}</li>
+				<li id="pound-10-gold">{{loc 'loading'}}</li>
+				<li id="ruble-10-gold">{{loc 'loading'}}</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			50 <span class="coin coin-gold"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gold-50-buy">{{loc 'loading'}}</li>
+				<li id="dollar-50-gold">{{loc 'loading'}}</li>
+				<li id="pound-50-gold">{{loc 'loading'}}</li>
+				<li id="ruble-50-gold">{{loc 'loading'}}</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			100 <span class="coin coin-gold"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gold-100-buy">{{loc 'loading'}}</li>
+				<li id="dollar-100-gold">{{loc 'loading'}}</li>
+				<li id="pound-100-gold">{{loc 'loading'}}</li>
+				<li id="ruble-100-gold">{{loc 'loading'}}</li>
+			</ul>
+		</div>
+		<div class="col-xs-3">
+			250 <span class="coin coin-gold"></span>&nbsp;{{loc 'cost'}}
+			<ul class="list-unstyled m-t-1">
+				<li id="gold-250-buy">{{loc 'loading'}}</li>
+				<li id="dollar-250-gold">{{loc 'loading'}}</li>
+				<li id="pound-250-gold">{{loc 'loading'}}</li>
+				<li id="ruble-250-gold">{{loc 'loading'}}</li>
+			</ul>
+		</div>
+	</div>
+	
+	<form class="form-group m-b-0" id="set-gold-price-form">
+		<label for="set-gold-price">{{loc 'notify_10_gold'}}</label>			
+		<div class="input-group">
+			<input type="number" class="form-control" id="set-gold-price" pattern="\d+" min="0" required>
+			<span class="input-group-btn">
+				<button class="btn btn-secondary" type="submit">{{loc 'save'}}</button>
+			</span>
+		</div>
+		<small class="text-muted">{{loc 'set_zero_to_disable'}}.</small>
+		<div><small class="text-muted">{{loc 'press_x_button_to_stop'}}</small></div>
+		
+		<div class="js-notifications m-t-1"></div>
+	</form>
+</script>
+
+<script defer src="/js/pages/currency_exchange.js"></script>
