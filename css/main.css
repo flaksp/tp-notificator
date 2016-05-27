@@ -23,13 +23,6 @@ a:visited {
 	color: #609;
 }
 
-.abbr {
-	border-bottom: 1px dotted;
-	cursor: help;
-}
-
-.line-height-default { line-height: 1.5 !important; }
-
 /* Left side navigation */
 .c-navigation div {
 	padding-top: .25rem;
@@ -85,17 +78,11 @@ a:visited {
 .text-rarity-Ascended   { color: #fb3e8d; }
 .text-rarity-Legendary  { color: #4c139d; }
 
-/* Forces first letter to be uppercase */
-.text-fl-uppercase { display: inline-block; }
-.text-fl-uppercase:first-letter { text-transform: uppercase; }
-
 .app-title {
 	border-bottom: 4px solid #373a3c;
 	padding-bottom: 1rem;
 	margin-bottom: 1rem;
 }
-
-.full-opacity { opacity: 0; }
 
 /* Middle of the screen wrapper */
 .fluid-vp-wrapper {
@@ -108,8 +95,6 @@ a:visited {
 	vertical-align: middle;
 	height: calc(100vh - 2rem);
 }
-
-.text-color-black {color: #373a3c !important; }
 
 /* Webkit scrollbar style */
 aside::-webkit-scrollbar { display: none; }

@@ -9,7 +9,7 @@
 		"message": "addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/"
 	},
 	"Yandex_url": {
-		"message": "false"
+		"message": "chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk"
 	},
 	"buying_list": {
 		"message": "Текущие покупки"
@@ -669,5 +669,11 @@
 	},
 	"waiting_for_webextensions": { 
 		"message": "Я жду, когда Mozilla закончат реализацию <a href='https://wiki.mozilla.org/WebExtensions'>WebExtensions</a> в Firefox, чтобы я смог безболезненно портировать это расширение в этот браузер. WebExtensions на данный момент поддерживает только Firefox Nightly (версия FF для разработчиков), но не стандартная версия FF." 
+	},
+	"cl_1_5_0_1": { 
+		"message": "<li>Обновлена ссылка на расширение для Яндекс.Браузера.</li>" 
+	},
+	"cl_1_5_0_1_news": { 
+		"message": "Опубликована версия для Яндекс.Браузера. Вы можете установить расширение прямо из <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>магазина расширений Chrome</a>. Также посмотрите на плюсы и минусы версии для каждого браузера <a data-local-page='faq/browsers'>на странице поддерживаемых браузеров</a>." 
 	}
 }

@@ -1,0 +1,13 @@
+.abbr {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+.line-height-default { line-height: 1.5 !important; }
+
+.text-color-black {color: #373a3c !important; }
+
+.text-fl-uppercase { display: inline-block; }
+.text-fl-uppercase:first-letter { text-transform: uppercase; }
+
+.full-opacity { opacity: 0; }

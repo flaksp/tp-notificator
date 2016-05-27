@@ -9,7 +9,7 @@
 		"message": "addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/"
 	},
 	"Yandex_url": {
-		"message": "false"
+		"message": "chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk"
 	},
 	"buying_list": {
 		"message": "Buying list"
@@ -669,5 +669,11 @@
 	},
 	"waiting_for_webextensions": { 
 		"message": "I'm waiting until Mozilla finishes <a href='https://wiki.mozilla.org/WebExtensions'>WebExtensions</a> feature in Firefox so I'll be able to port my extension to this browser. WebExtensions feature is supported only in Firefox Nightly (version of FF for developers) for now, but not for standart FF version." 
+	},
+	"cl_1_5_0_1": { 
+		"message": "<li>Updated link to extension for Yandex.Browser at FAQ page.</li>" 
+	},
+	"cl_1_5_0_1_news": { 
+		"message": "Released version of the extension for Yandex.Browser. You can get it <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>." 
 	}
 }
