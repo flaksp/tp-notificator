@@ -23,6 +23,20 @@ a:visited {
 	color: #609;
 }
 
+mark {
+    color: #373a3c;
+    background: #ff0;
+	padding: 0;
+}
+
+/*
+.mark-red {
+    color: #373a3c;
+    background: #ffc8c8;
+	padding: 0;
+}
+*/
+
 /* Left side navigation */
 .c-navigation div {
 	padding-top: .25rem;
@@ -56,6 +70,12 @@ a:visited {
 	width: 100%;
 }
 
+.item-icon.item-icon--lg {
+	height: 64px;
+    width: 64px;
+    margin-top: 4px;
+}
+
 /* Coins */
 .coin-copper { background: url(/img/coin_copper.png) center center no-repeat; }
 .coin-silver { background: url(/img/coin_silver.png) center center no-repeat; }
@@ -69,14 +89,18 @@ a:visited {
 }
 
 /* Item rarity */
-.text-rarity-Junk       { color: #aaa; }
-.text-rarity-Basic      { color: #000; }
-.text-rarity-Fine       { color: #62a4da; }
-.text-rarity-Masterwork { color: #1a9306; }
-.text-rarity-Rare       { color: #fcd00b; }
-.text-rarity-Exotic     { color: #ffa405; }
-.text-rarity-Ascended   { color: #fb3e8d; }
-.text-rarity-Legendary  { color: #4c139d; }
+.item-rarity.item-rarity--Junk       { color: #aaa; }
+.item-rarity.item-rarity--Basic      { color: #000; }
+.item-rarity.item-rarity--Fine       { color: #62a4da; }
+.item-rarity.item-rarity--Masterwork { color: #1a9306; }
+.item-rarity.item-rarity--Rare       { color: #fcd00b; }
+.item-rarity.item-rarity--Exotic     { color: #ffa405; }
+.item-rarity.item-rarity--Ascended   { color: #fb3e8d; }
+.item-rarity.item-rarity--Legendary  { color: #4c139d; }
+
+.item-rarity a {
+	color: inherit;
+}
 
 .app-title {
 	border-bottom: 4px solid #373a3c;

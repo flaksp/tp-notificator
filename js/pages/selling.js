@@ -70,18 +70,33 @@ $("document").ready(function() {
 							'</div>' +
 							'<div class="col-xs-11">' +
 								'<div class="row">' +
-									'<div class="col-xs-7 js-item-name text-truncate">' + item['item_id'] + '</div>' +
+									'<div class="col-xs-5 js-item-name text-truncate">' + item['item_id'] + '</div>' +
+									'<div class="col-xs-2 text-xs-right">' +
+										'<span class="cursor-pointer js-copy-code js-clipboard" title="' + chrome.i18n.getMessage("copy_code") + '" hidden>' +
+											'<span class="fa fa-code"></span>' +
+										'</span>&nbsp;&nbsp;' +
+										'<span class="cursor-pointer js-copy-name js-clipboard" title="' + chrome.i18n.getMessage("copy_name") + '" hidden>' +
+											'<span class="fa fa-files-o"></span>' +
+										'</span>' +
+									'</div>' +
 									'<div class="col-xs-4">' +
 										'<span class="fa fa-clock-o"></span> ' +
 										time_ago(Date.parse(item['created'])) + ' ' + chrome.i18n.getMessage("ago") +
 									'</div>' +
 									'<div class="col-xs-1 text-xs-center">' +
-										'<div class="cursor-pointer js-track-this-item" title="' + chrome.i18n.getMessage("notify_when_sold") + '">' +
+										'<span class="cursor-pointer js-track-this-item" title="' + chrome.i18n.getMessage("notify_when_sold") + '">' +
 											'<span class="fa fa-eye"></span>' +
-										'</div>' +
+										'</span>' +
 									'</div>' +
+									
+									
 									'<div class="col-xs-3">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>' +
-									'<div class="col-xs-4">' + format_coins(item['price']) + '</div>' +
+									'<div class="col-xs-3">' + format_coins(item['price']) + '</div>' +
+									'<div class="col-xs-1 text-xs-right">' +
+										'<span class="cursor-pointer js-detailed-info" title="' + chrome.i18n.getMessage("detailed_info") + '" hidden>' +
+											'<span class="fa fa-info-circle"></span>' +
+										'</span>' +
+									'</div>' +
 									'<div class="col-xs-4" title="' + chrome.i18n.getMessage("price_difference_sell") + '">' +
 										'<span class="fa fa-sort-amount-desc"></span> ' +
 										'<span class="js-price-range">' + chrome.i18n.getMessage("loading") + '</span>' +
@@ -129,6 +144,42 @@ $("document").ready(function() {
 					
 					load_metadata(item_ids.join(','));
 					load_price_range(item_ids.join(','));
+					
+					// Append modal
+					$("#selling_content").append(
+						'<div class="modal fade" id="lot-details" tabindex="-1" role="dialog" aria-labelledby="lot-details-title" aria-hidden="true">' +
+							'<div class="modal-dialog" role="document">' +
+								'<div class="modal-content">' +
+									'<div class="modal-header">' +
+										'<button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+											'<span aria-hidden="true">&times;</span>' +
+										'</button>' +
+										'<h2 class="h4 modal-title" id="lot-details-title">Modal title</h2>' +
+									'</div>' +
+									'<div class="modal-body">' +
+										'<div class="row m-b-2">' +
+											'<div class="col-xs-2">' +
+												'<div class="item-icon item-icon--lg" id="lot-details-icon"></div>' +
+											'</div>' +
+											'<div class="col-xs-10">' +
+												'<b>' + chrome.i18n.getMessage("level") + ': <span id="lot-details-level"></span></b>. <span id="lot-details-description"></span>' +
+											'</div>' +
+										'</div>' +
+										'<div class="row">' +
+											'<div class="col-xs-6">' +
+												'<h3 class="h4">' + chrome.i18n.getMessage("selling_orders") + ':</h3>' +
+												'<ul class="list-unstyled" id="lot-details-sells"></ul>' +
+											'</div>' +
+											'<div class="col-xs-6">' +
+												'<h3 class="h4">' + chrome.i18n.getMessage("buying_orders") + ':</h3>' +
+												'<ul class="list-unstyled" id="lot-details-buys"></ul>' +
+											'</div>' +
+										'</div>' +
+									'</div>' +
+								'</div>' +
+							'</div>' +
+						'</div>'
+					);
 				},
 				error: function(x, t, m) {					
 					if (++this.tryCount <= this.retryLimit) {
@@ -167,8 +218,17 @@ function load_metadata(item_ids) {
 			retryLimit: 3,
 			success: function(data, textStatus, XMLHttpRequest) {				
 				data.forEach(function(item, i, arr) {
-					$(".js-item-block[data-vnum=" + item['id'] + "] .js-item-name").text(item['name']).addClass("text-rarity-" + item['rarity']).attr("title", item['name']);
+					$(".js-item-block[data-vnum=" + item['id'] + "] .js-item-name").html('<a href="http://wiki.guildwars2.com/index.php?search=' + item['name'] + '">' + item['name'] + '</a>').addClass("item-rarity item-rarity--" + item['rarity']).attr("title", item['name']);
 					$(".js-item-block[data-vnum=" + item['id'] + "] .item-icon").html('<img src="' + item['icon'] + '" alt="icon" title="' + item['name'] + '">');
+					
+					// clipboard.js isn't working well with data() function
+					$(".js-item-block[data-vnum=" + item['id'] + "] .js-copy-name").attr('data-clipboard-text', item['name']).removeAttr('hidden');
+					$(".js-item-block[data-vnum=" + item['id'] + "] .js-copy-code").attr('data-clipboard-text', item['chat_link']).removeAttr('hidden');
+					
+					$(".js-item-block[data-vnum=" + item['id'] + "] .js-detailed-info").removeAttr('hidden');
+					
+					$(".js-item-block[data-vnum=" + item['id'] + "]").data('description', item['description']);
+					$(".js-item-block[data-vnum=" + item['id'] + "]").data('level', item['level']);
 				});
 			},
 			error: function(x, t, m) {				
@@ -293,4 +353,55 @@ $(document).off("click", "#track_button, #untrack_button").on("click", "#track_b
 			$(".js-track-this-item").filter(".text-info").removeClass("text-info");
 		});
 	}
+});
+
+// Detailed info
+$(document).off("click", ".js-detailed-info").on("click", ".js-detailed-info", function() {
+	var _this = $(this);
+	
+	$('#lot-details-buys').empty();
+	$('#lot-details-sells').empty();
+	$('#lot-details-icon').empty();
+	$('#lot-details-level').empty();
+	$('#lot-details-description').empty();
+	
+	$('#lot-details-title').text($(_this).parents(".js-item-block").find('.js-item-name').text());
+	$('#lot-details-icon').html($(_this).parents(".js-item-block").find('.item-icon').html());
+	$('#lot-details-level').text($(_this).parents(".js-item-block").data('level'));
+	$('#lot-details-description').text($(_this).parents(".js-item-block").data('description'));
+	
+	var my_price = $(_this).parents(".js-item-block").data('price');
+	
+	$.ajax({
+		type: 'GET',
+		url: 'https://api.guildwars2.com/v2/commerce/listings',
+		data: {"ids": $(_this).parents(".js-item-block").data('vnum')},
+		dataType: "json",
+		cache: true,
+		timeout: 10000,
+		tryCount: 0,
+		retryLimit: 3,
+		success: function(data, textStatus, XMLHttpRequest) {			
+			data[0]['buys'].forEach(function(item, i, arr) {
+				$('#lot-details-buys').append('<li>' + format_coins(item['unit_price']) + ' &bull; ' + item['listings'] + ' ' + chrome.i18n.getMessage("orders") + ' &bull; ' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</li>');
+			});
+			
+			data[0]['sells'].forEach(function(item, i, arr) {
+				if (my_price == item['unit_price']) {
+					$('#lot-details-sells').append('<li><mark>' + format_coins(item['unit_price']) + ' &bull; ' + item['listings'] + ' ' + chrome.i18n.getMessage("orders") + ' &bull; ' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</mark></li>');
+				}
+				else {
+					$('#lot-details-sells').append('<li>' + format_coins(item['unit_price']) + ' &bull; ' + item['listings'] + ' ' + chrome.i18n.getMessage("orders") + ' &bull; ' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</li>');
+				}
+			});
+			
+			$('#lot-details').modal('show');
+		},
+		error: function(x, t, m) {				
+			if (++this.tryCount <= this.retryLimit) {
+				$.ajax(this);
+				return;
+			}
+		}
+	});
 });

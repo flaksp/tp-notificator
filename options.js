@@ -74,7 +74,13 @@ $("body").off("submit", "#add_api_key").on("submit", "#add_api_key", function(ev
 				cbf.storage.sync.get(function(sync_storage) {
 					sync_storage['access_token'][api_key] = data['name'];
 
-					chrome.storage.local.set({"current_api_key": api_key}, function() {
+					chrome.storage.local.set({
+						"current_api_key": api_key,
+						"historical_sold": [],
+						"historical_bought": [],
+						"selling_track_list": {},
+						"buying_track_list": {}
+					}, function() {
 						cbf.storage.sync.set({"access_token": sync_storage['access_token']}, function() {
 							$(el).find(".js-notifications").html('<p class="text-success">' + chrome.i18n.getMessage("api_key_saved", [data['name']]) + '</p>');
 						
@@ -169,7 +175,13 @@ $(document).off("click", "#use_selected").on("click", "#use_selected", function(
 			return;
 		}
 		
-		chrome.storage.local.set({"current_api_key": $("#current_api_key select").find("option:selected").attr("value")}, function() {
+		chrome.storage.local.set({
+			"current_api_key": $("#current_api_key select").find("option:selected").attr("value"),
+			"historical_sold": [],
+			"historical_bought": [],
+			"selling_track_list": {},
+			"buying_track_list": {}
+		}, function() {
 			$("#current_api_key").find(".js-notifications").html('<p class="text-success">' + chrome.i18n.getMessage("api_key_switched", [$("#current_api_key select").find("option:selected").text()]) + '</p>');
 		});
 	});
@@ -210,7 +222,13 @@ $("body").off("submit", "#algorithm").on("submit", "#algorithm", function(event)
 	
 	var algorithm = $(el).find("input:checked").val();
 
-	chrome.storage.local.set({"algorithm": parseInt(algorithm), "historical_bought": [], "historical_sold": [], "buying_track_list": {}, "selling_track_list": {}}, function() {
+	chrome.storage.local.set({
+		"algorithm": parseInt(algorithm),
+		"historical_bought": [],
+		"historical_sold": [],
+		"buying_track_list": {},
+		"selling_track_list": {}
+	}, function() {
 		$(el).find(".js-notifications").html('<p class="text-success">' + chrome.i18n.getMessage("changes_saved") + '</p>');
 	});	
 });
@@ -226,6 +244,14 @@ $("body").off("submit", "#sound").on("submit", "#sound", function(event) {
 	chrome.storage.local.set({"sound": parseFloat(sound)}, function() {			
 		$(el).find(".js-notifications").html('<p class="text-success">' + chrome.i18n.getMessage("changes_saved") + '</p>');
 	});
+});
+
+$("body").off("click", ".js-sound-test").on("click", ".js-sound-test", function(event) {
+	var el = $(this);
+	
+	var myAudio = new Audio("/mp3/" + $(el).data("sound") + ".mp3");
+	myAudio.volume = $("#sound").find("input").val();
+	myAudio.play();
 });
 
 // Select default page

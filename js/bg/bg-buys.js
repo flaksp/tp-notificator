@@ -113,8 +113,6 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 					item_ids[parseInt(item['id'])] = {"count": parseInt(item['quantity']), "vnum": parseInt(item['item_id'])};
 				});
 				
-				chrome.storage.local.set({"historical_bought": Object.keys(item_ids)});
-				
 				if (local_storage["historical_bought"].length > 0) {
 					var difference = Object.keys(item_ids).filter(function(el) {
 						return local_storage["historical_bought"].indexOf(el) < 0;
@@ -148,6 +146,8 @@ chrome.alarms.onAlarm.addListener(function(alarm) {
 				else {
 					console.log("Just created new historical object in storage.");
 				}
+				
+				chrome.storage.local.set({"historical_bought": Object.keys(item_ids)});
 			});
 		}
 	});

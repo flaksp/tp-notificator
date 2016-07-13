@@ -84,4 +84,7 @@ window.onload = function() {
 		$('html, body, main').css('height', '100%');
 		$('main').removeClass('custom-scrollbar');
 	}
+	
+	// Init clipboard
+	new Clipboard('.js-clipboard');
 }
