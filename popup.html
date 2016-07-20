@@ -7,6 +7,7 @@
 		
 		<link rel="stylesheet" href="/css/libs/bootstrap.css" >
 		<link rel="stylesheet" href="/css/libs/font-awesome.css">
+		<link rel="stylesheet" href="/css/libs/balloon.css">
 		<link rel="stylesheet" href="/css/main.css">
 		<link rel="stylesheet" href="/css/helpers.css">
 	</head>
@@ -16,17 +17,37 @@
 		<script id="main" type="text/x-handlebars-template">
 			<aside class="col-xs-1 p-x-0 text-xs-center bg-inverse">
 				<div class="h3 line-height-default m-b-0 c-navigation">
-					<div data-local-page="buying" title="{{loc 'buying_list'}}"><span class="fa fa-sign-in"></span></div>
-					<div data-local-page="selling" title="{{loc 'selling_list'}}"><span class="fa fa-sign-out"></span></div>
-					<div data-local-page="bought" title="{{loc 'buying_history'}}"><span class="fa fa-shopping-cart"></span></div>
-					<div data-local-page="sold" title="{{loc 'selling_history'}}"><span class="fa fa-eur"></span></div>
-					<div data-local-page="currency_exchange" title="{{loc 'currency_exchange'}}"><span class="fa fa-diamond"></span></div>
-					<div data-local-page="calculator" title="{{loc 'calculator'}}"><span class="fa fa-calculator"></span></div>
-					<div data-local-page="faq" title="{{loc 'faq'}}"><span class="fa fa-info-circle"></span></div>
-					<div data-local-page="contacts" title="{{loc 'contacts'}}"><span class="fa fa-envelope"></span></div>
-					<div data-local-page="changelog" title="{{loc 'changelog'}}"><span class="fa fa-newspaper-o"></span></div>
-					<!--<div class="text-warning" data-local-page="full-tab" title="{{loc 'full_tab_mode'}}"><span class="fa fa-arrows-alt"></span></div>-->
-					<div class="text-warning" data-local-page="options" title="{{loc 'options'}}"><span class="fa fa-cogs"></span></div>
+					<div data-local-page="buying" data-balloon="{{loc 'buying_list'}}" data-balloon-pos="right">
+						<span class="fa fa-sign-in"></span>
+					</div>
+					<div data-local-page="selling" data-balloon="{{loc 'selling_list'}}" data-balloon-pos="right">
+						<span class="fa fa-sign-out"></span>
+					</div>
+					<div data-local-page="bought" data-balloon="{{loc 'buying_history'}}" data-balloon-pos="right">
+						<span class="fa fa-shopping-cart"></span>
+					</div>
+					<div data-local-page="sold" data-balloon="{{loc 'selling_history'}}" data-balloon-pos="right">
+						<span class="fa fa-eur"></span>
+					</div>
+					<div data-local-page="currency_exchange" data-balloon="{{loc 'currency_exchange'}}" data-balloon-pos="right">
+						<span class="fa fa-diamond"></span>
+					</div>
+					<div data-local-page="calculator" data-balloon="{{loc 'calculator'}}" data-balloon-pos="right">
+						<span class="fa fa-calculator"></span>
+					</div>
+					<div data-local-page="faq" data-balloon="{{loc 'faq'}}" data-balloon-pos="right">
+						<span class="fa fa-info-circle"></span>
+					</div>
+					<div data-local-page="contacts" data-balloon="{{loc 'contacts'}}" data-balloon-pos="right">
+						<span class="fa fa-envelope"></span>
+					</div>
+					<div data-local-page="changelog" data-balloon="{{loc 'changelog'}}" data-balloon-pos="right">
+						<span class="fa fa-newspaper-o"></span>
+					</div>
+					<!--<div class="text-warning" data-local-page="full-tab" data-balloon="{{loc 'full_tab_mode'}}" data-balloon-pos="right"><span class="fa fa-arrows-alt"></span></div>-->
+					<div class="text-warning" data-local-page="options" data-balloon="{{loc 'options'}}" data-balloon-pos="right">
+						<span class="fa fa-cogs"></span>
+					</div>
 				</div>
 			</aside>
 			<main class="col-xs-offset-1 col-xs-11 p-y-1 custom-scrollbar">

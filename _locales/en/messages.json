@@ -677,7 +677,7 @@
 		"message": "Released version of the extension for Yandex.Browser. You can get it <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>." 
 	},
 	"cl_1_6_0_0": { 
-	"message": "<li>You are now able to test the volume of notifications at the <a data-local-page='options'>options page</a> </li><li>Added \"Copy item name\" and \"Copy item chat code\" buttons.</li><li>Item names are now links which lead to GW2Wiki.</li><li>Added more information to <a data-local-page='contacts'>contacts page</a>.</li><li>Added a new button — \"Detailed info\". By pressing this one you can see item's detailed trading post information.</li><li>Fixed a bug when after switching between API keys you get a lot of notifications. Your transaction data is now deleted after switching API key. It's very hard to make the extension work with multiple API keys.</li>" 
+		"message": "<li>You are now able to test the volume of notifications at the <a data-local-page='options'>options page</a>.</li><li>Added \"Copy item name\" and \"Copy item chat code\" buttons.</li><li>Item names are now links which lead to GW2Wiki.</li><li>Added more information to <a data-local-page='contacts'>contacts page</a>.</li><li>Added a new button — \"Detailed info\". By pressing this one you can see item's detailed trading post information.</li><li>Fixed a bug when after switching between API keys you get a lot of notifications. Your transaction data is now deleted after switching API key. It's very hard to make the extension work with multiple API keys.</li>" 
 	}, 
 	"test": { 
 		"message": "Test" 
@@ -711,5 +711,8 @@
 	}, 
 	"level": { 
 		"message": "Level" 
+	},
+	"cl_1_6_0_1": { 
+		"message": "<li>Small UI improvements.</li>" 
 	}
 }
