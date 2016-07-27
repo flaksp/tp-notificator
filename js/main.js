@@ -87,4 +87,11 @@ window.onload = function() {
 	
 	// Init clipboard
 	new Clipboard('.js-clipboard');
+
+	// Basic fonfigs for highstock
+	Highcharts.setOptions({
+		global: {
+			timezoneOffset: new Date().getTimezoneOffset()
+		}
+	});
 }

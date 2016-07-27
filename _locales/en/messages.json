@@ -227,7 +227,7 @@
 		"message": "Is this extension safe for my account?"
 	},
 	"faq_question_is_it_safe": {
-		"message": "Yes, using applications based on official Guild Wars 2 API is safe for your account because official API provides only read-only access to not intimate information. For example, application developers can't get your email, serial number, password and other stuff. Make sure that this extension doesn't connect to any of my servers and it's fully working with Guild Wars 2 API without third-party servers. You can check it by pressing \"Details\" link on <a href='chrome://extensions/'>extensions page</a>."
+		"message": "Yes, using applications based on official Guild Wars 2 API is safe for your account because official API provides only read-only access to not intimate information. For example, application developers can't get your email, serial number, password and other stuff. Make sure that this extension doesn't connect to any of my servers and is fully working with Guild Wars 2 API and other resources like GW2Spidy and GW2Shinies without any third-party servers. You can check it by pressing \"Details\" link on <a href='chrome://extensions/'>extensions page</a>."
 	},
 	"faq_is_it_legal": {
 		"message": "Is this extension legal to use?"
@@ -714,5 +714,38 @@
 	},
 	"cl_1_6_0_1": { 
 		"message": "<li>Small UI improvements.</li>" 
+	},
+	"months": {
+		"message": "m."
+	},
+	"years": {
+		"message": "y."
+	},
+	"from_beginning_year": {
+		"message": "YTD"
+	},
+	"gw2spidy_credits": {
+		"message": "Historical trading post data provided by GW2Spidy"
+	},
+	"gw2shinies_credits": {
+		"message": "Historical currency exchange rate provided by GW2Shinies"
+	},
+	"buy_100_gems": {
+		"message": "100 gems buy price"
+	},
+	"sell_100_gems": {
+		"message": "100 gems sell price"
+	},
+	"selling_price": { 
+		"message": "Sell price" 
+	}, 
+	"buying_price": { 
+		"message": "Buy price" 
+	},
+	"volume": {
+		"message": "Volume"
+	},
+	"cl_1_7_0_0": { 
+		"message": "<li>Added a graph to the \"Detailed info\" modal window.</li><li>Added a graph to the <a data-local-page='currency_exchange'>currency exchange page</a>.</li>" 
 	}
 }

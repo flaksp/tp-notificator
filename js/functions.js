@@ -182,6 +182,188 @@ function create_graph_gem_url(graph_id) {
 	return graph_list[graph_id - 1];
 }
 
+function build_price_chart(selector, item_vnum) {
+	//https://www.gw2spidy.com/api/v0.9/json/listings/13364/sell
+	//https://www.gw2spidy.com/api/v0.9/json/listings/13364/buy
+
+	$.ajax({
+		type: 'GET',
+		url: 'https://www.gw2spidy.com/api/v0.9/json/listings/' + item_vnum + '/sell',
+		dataType: "json",
+		timeout: 10000,
+		tryCount: 0,
+		retryLimit: 3,
+		success: function(data, textStatus, XMLHttpRequest) {
+			if (typeof data['results'] === 'object') {
+				var sells = [];
+				var sells_count = [];
+
+				data['results'].forEach(function(item, i, arr) {
+					sells.push([
+						Date.parse(item['listing_datetime']), item['quantity'] === 0 ? null : item['unit_price']
+					]);
+
+					sells_count.push([
+						Date.parse(item['listing_datetime']), item['quantity']
+					]);
+				});
+
+				$.ajax({
+					type: 'GET',
+					url: 'https://www.gw2spidy.com/api/v0.9/json/listings/' + item_vnum + '/buy',
+					dataType: "json",
+					timeout: 10000,
+					tryCount: 0,
+					retryLimit: 3,
+					success: function(data, textStatus, XMLHttpRequest) {
+						if (typeof data['results'] === 'object') {
+							var buys = [];
+
+							data['results'].forEach(function(item, i, arr) {
+								buys.push([
+									Date.parse(item['listing_datetime']), item['quantity'] === 0 ? null : item['unit_price']
+								]);
+							});
+
+							$(selector).highcharts('StockChart', {
+								credits : {
+									href : 'http://www.gw2spidy.com/',
+									text : chrome.i18n.getMessage("gw2spidy_credits")
+								},
+
+								scrollbar : {
+									enabled: false
+								},
+
+								legend : {
+									enabled: true
+								},
+
+								colors: ['#cc0000', '#434348', '#90ed7d'],
+
+								rangeSelector : {
+									selected : 1,
+									buttons: [
+										{
+											type: 'day',
+											count: 1,
+											text: '1 ' + chrome.i18n.getMessage("days")
+										},
+										{
+											type: 'day',
+											count: 7,
+											text: '7 ' + chrome.i18n.getMessage("days")
+										},
+										{
+											type: 'month',
+											count: 1,
+											text: '1 ' + chrome.i18n.getMessage("months")
+										},
+										{
+											type: 'ytd',
+											text: chrome.i18n.getMessage("from_beginning_year")
+										},
+										{
+											type: 'year',
+											count: 1,
+											text: '1 ' + chrome.i18n.getMessage("years")
+										},
+										{
+											type: 'all',
+											text: titleCase(chrome.i18n.getMessage("all"))
+										}
+									]
+								},
+
+								xAxis: {
+									crosshair: {
+										zIndex: 10
+									}
+								},
+
+								yAxis: [
+									{
+										showFirstLabel: false
+									},
+									{ // Column
+										labels: {
+											align: 'left',
+											x: 3,
+											y: 16,
+										},
+										showFirstLabel: false,
+										opposite: false
+									}
+								],
+
+								series : [
+									{
+										type: "line",
+										yAxis: 0,
+										zIndex: 3,
+										dataGrouping: {
+											enabled: false
+										},
+										name : chrome.i18n.getMessage("selling_price"),
+										data : sells.reverse(),
+										tooltip: {
+											pointFormatter: function() {
+												return '<span style="color: ' + this.color + '">\u25CF</span> ' + this.series.name + ': ' + format_coins_clean(this.y) + '<br>';
+											}
+										}
+									},
+									{
+										type: "line",
+										yAxis: 0,
+										zIndex: 2,
+										dataGrouping: {
+											enabled: false
+										},
+										name : chrome.i18n.getMessage("buying_price"),
+										data : buys.reverse(),
+										tooltip: {
+											pointFormatter: function() {
+												return '<span style="color: ' + this.color + '">\u25CF</span> ' + this.series.name + ': ' + format_coins_clean(this.y) + '<br>';
+											}
+										}
+									},
+									{
+										type: "column",
+										yAxis: 1,
+										zIndex: 1,
+										dataGrouping: {
+											enabled: false
+										},
+										name : chrome.i18n.getMessage("volume"),
+										data : sells_count.reverse(),
+										tooltip: {
+											pointFormatter: function() {
+												return '<span style="color: ' + this.color + '">\u25CF</span> ' + this.series.name + ': ' + addCommas(this.y) + '<br>';
+											}
+										}
+									}
+								]
+							});
+						}
+					},
+					error: function(x, t, m) {					
+						if (++this.tryCount <= this.retryLimit) {
+							$.ajax(this);
+							return;
+						}
+					}
+				});
+			}
+		},
+		error: function(x, t, m) {					
+			if (++this.tryCount <= this.retryLimit) {
+				$.ajax(this);
+				return;
+			}
+		}
+	});
+}
+
 var urlParams;
 (window.onpopstate = function () {
 	var match,
@@ -194,3 +376,19 @@ var urlParams;
 	while (match = search.exec(query))
 		urlParams[decode(match[1])] = decode(match[2]);
 })();
+
+function titleCase(string) {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function addCommas(nStr) {
+	nStr += '';
+	x = nStr.split('.');
+	x1 = x[0];
+	x2 = x.length > 1 ? '.' + x[1] : '';
+	var rgx = /(\d+)(\d{3})/;
+	while (rgx.test(x1)) {
+			x1 = x1.replace(rgx, '$1' + '.' + '$2');
+	}
+	return x1 + x2;
+}

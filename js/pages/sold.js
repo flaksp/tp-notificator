@@ -177,22 +177,25 @@ $("document").ready(function() {
 										'<h2 class="h4 modal-title text-truncate" id="lot-details-title">Modal title</h2>' +
 									'</div>' +
 									'<div class="modal-body">' +
-										'<div class="row m-b-2">' +
+										'<div class="row">' +
 											'<div class="col-xs-2">' +
 												'<div class="item-icon item-icon--lg" id="lot-details-icon"></div>' +
 											'</div>' +
 											'<div class="col-xs-10">' +
 												'<b>' + chrome.i18n.getMessage("level") + ': <span id="lot-details-level"></span></b>. <span id="lot-details-description"></span>' +
 											'</div>' +
+											'<div class="col-xs-12">' +
+												'<div id="lot-details-chart" class="m-t-1" style="margin: 0 -.9375rem"></div>' +
+											'</div>' +
 										'</div>' +
-										'<div class="row">' +
+										'<div class="row m-t-1">' +
 											'<div class="col-xs-6">' +
 												'<h3 class="h4">' + chrome.i18n.getMessage("selling_orders") + ':</h3>' +
-												'<ul class="list-unstyled" id="lot-details-sells"></ul>' +
+												'<ul class="list-unstyled m-b-0" id="lot-details-sells"></ul>' +
 											'</div>' +
 											'<div class="col-xs-6">' +
 												'<h3 class="h4">' + chrome.i18n.getMessage("buying_orders") + ':</h3>' +
-												'<ul class="list-unstyled" id="lot-details-buys"></ul>' +
+												'<ul class="list-unstyled m-b-0" id="lot-details-buys"></ul>' +
 											'</div>' +
 										'</div>' +
 									'</div>' +
@@ -280,6 +283,7 @@ $(document).off("click", ".js-detailed-info").on("click", ".js-detailed-info", f
 	$('#lot-details-icon').empty();
 	$('#lot-details-level').empty();
 	$('#lot-details-description').empty();
+	$('#lot-details-chart').html('<div class="text-xs-center"><div class="spinner"><div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div></div></div>');
 	
 	$('#lot-details-title').text($(_this).parents(".js-item-block").find('.js-item-name').text());
 	$('#lot-details-icon').html($(_this).parents(".js-item-block").find('.item-icon').html());
@@ -305,12 +309,18 @@ $(document).off("click", ".js-detailed-info").on("click", ".js-detailed-info", f
 			});
 			
 			$('#lot-details').modal('show');
+
+			$('#lot-details').off('shown.bs.modal').on('shown.bs.modal', function () {
+				build_price_chart('#lot-details-chart', $(_this).parents(".js-item-block").data('vnum'));
+			});
 		},
 		error: function(x, t, m) {				
 			if (++this.tryCount <= this.retryLimit) {
 				$.ajax(this);
 				return;
 			}
+
+			$('#lot-details-chart').html('<div class="test-xs-center">' + chrome.i18n.getMessage("error") + '</div>');
 		}
 	});
 });

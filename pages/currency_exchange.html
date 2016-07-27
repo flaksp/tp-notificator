@@ -95,7 +95,7 @@
 		</div>
 	</div>
 	
-	<form class="form-group m-b-0" id="set-gold-price-form">
+	<form class="form-group m-b-1" id="set-gold-price-form">
 		<label for="set-gold-price">{{loc 'notify_10_gold'}}</label>			
 		<div class="input-group">
 			<input type="number" class="form-control" id="set-gold-price" pattern="\d+" min="0" required>
@@ -108,6 +108,14 @@
 		
 		<div class="js-notifications m-t-1"></div>
 	</form>
+
+	<div id="gem-history-chart">
+		<div class="text-xs-center">
+			<div class="spinner">
+				<div class="rect1"></div><div class="rect2"></div><div class="rect3"></div><div class="rect4"></div><div class="rect5"></div>
+			</div>
+		</div>
+	</div>
 </script>
 
 <script defer src="/js/pages/currency_exchange.js"></script>

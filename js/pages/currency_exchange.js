@@ -94,6 +94,123 @@ $("document").ready(function() {
 			}
 		}
 	});
+
+	$.ajax({
+		type: 'GET',
+		url: 'https://www.gw2shinies.com/api/json/exchange/',
+		dataType: "json",
+		timeout: 10000,
+		tryCount: 0,
+		retryLimit: 3,
+		success: function(data, textStatus, XMLHttpRequest) {
+			if (typeof data === 'object') {
+				var buy_100_gems = [];
+				var sell_100_gems = [];
+
+				data.forEach(function(item, i, arr) {
+					buy_100_gems.push([
+						parseInt(item['timestamp']), parseInt(item['coins_per_gem_c2g']) === 0 ? null : (parseInt(item['coins_per_gem_c2g']) * 100)
+					]);
+
+					sell_100_gems.push([
+						parseInt(item['timestamp']), parseInt(item['coins_per_gem_g2c']) === 0 ? null : (parseInt(item['coins_per_gem_g2c']) * 100)
+					]);
+				});
+
+				$('#gem-history-chart').highcharts('StockChart', {
+					credits : {
+						href : 'https://www.gw2shinies.com/',
+						text : chrome.i18n.getMessage("gw2shinies_credits")
+					},
+
+					scrollbar : {
+						enabled: false
+					},
+
+					legend : {
+						enabled: true
+					},
+
+					rangeSelector : {
+						selected : 0,
+						buttons: [
+							{
+								type: 'day',
+								count: 1,
+								text: '1 ' + chrome.i18n.getMessage("days")
+							},
+							{
+								type: 'day',
+								count: 7,
+								text: '7 ' + chrome.i18n.getMessage("days")
+							},
+							{
+								type: 'month',
+								count: 1,
+								text: '1 ' + chrome.i18n.getMessage("months")
+							},
+							{
+								type: 'ytd',
+								text: chrome.i18n.getMessage("from_beginning_year")
+							},
+							{
+								type: 'year',
+								count: 1,
+								text: '1 ' + chrome.i18n.getMessage("years")
+							},
+							{
+								type: 'all',
+								text: titleCase(chrome.i18n.getMessage("all"))
+							}
+						]
+					},
+
+					yAxis: {
+						showFirstLabel: false
+					},
+
+					series : [
+						{
+							type: "spline",
+							zIndex: 2,
+							dataGrouping: {
+								enabled: false
+							},
+							name : chrome.i18n.getMessage("buy_100_gems"),
+							data : buy_100_gems,
+							tooltip: {
+								pointFormatter: function() {
+									return '<span style="color: ' + this.color + '">\u25CF</span> ' + this.series.name + ': ' + format_coins_clean(this.y) + '<br>';
+								}
+							}
+						},
+						{
+							type: "spline",
+							zIndex: 1,
+							dataGrouping: {
+								enabled: false
+							},
+							name : chrome.i18n.getMessage("sell_100_gems"),
+							data : sell_100_gems,
+							tooltip: {
+								pointFormatter: function() {
+									return '<span style="color: ' + this.color + '">\u25CF</span> ' + this.series.name + ': ' + format_coins_clean(this.y) + '<br>';
+								}
+							}
+						}
+					]
+				});
+			}
+		},
+		error: function(x, t, m) {					
+			if (++this.tryCount <= this.retryLimit) {
+				$.ajax(this);
+				return;
+			}
+
+			$('#gem-history-chart').html('<div class="test-xs-center">' + chrome.i18n.getMessage("error") + '</div>');
+		}
+	});
 });
 
 $("body").off("submit", "#set-gem-price-form").on("submit", "#set-gem-price-form", function(event) {
