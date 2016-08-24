@@ -461,32 +461,32 @@
 	"cl_1_1_3_0": {
 		"message": "<li>Added information about extension installation date at the bottom of the debug page (each settings reset will refresh this date).</li><li>Added begging to rate the extension <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>at Chrome store</a> to users who use the extension more than two weeks.</li><li>Added new setting which allow you to choose language of item names.</li><li>Added new setting which allow you to choose between two new algorithms.</li><li>Reduced size of the extension.</li>"
 	},
-	"algorithm_3": { 
-		"message": "The extension will notify you only about every sold item and about items you are buying and tracking right now" 
-	}, 
-	"algorithm_4": { 
-		"message": "The extension will notify you only about every bought item and about items you are selling and tracking right now" 
-	}, 
-	"items_language": { 
-		"message": "Item localization" 
-	}, 
-	"select_items_language": { 
-		"message": "Select a language which will be used to display item names" 
-	}, 
-	"english": { 
-		"message": "English" 
-	}, 
-	"french": { 
-		"message": "French" 
-	}, 
-	"german": { 
-		"message": "German" 
-	}, 
-	"spanish": { 
-		"message": "Spanish" 
-	}, 
-	"thanks": { 
-		"message": "Thanks" 
+	"algorithm_3": {
+		"message": "The extension will notify you only about every sold item and about items you are buying and tracking right now"
+	},
+	"algorithm_4": {
+		"message": "The extension will notify you only about every bought item and about items you are selling and tracking right now"
+	},
+	"items_language": {
+		"message": "Item localization"
+	},
+	"select_items_language": {
+		"message": "Select a language which will be used to display item names"
+	},
+	"english": {
+		"message": "English"
+	},
+	"french": {
+		"message": "French"
+	},
+	"german": {
+		"message": "German"
+	},
+	"spanish": {
+		"message": "Spanish"
+	},
+	"thanks": {
+		"message": "Thanks"
 	},
 	"thanks_content": {
 		"message": "<li>To <a href='http://guildwars-2.ru/'>guildwars-2.ru</a> (russian Guild Wars 2 community) for being told about this extension.</li>"
@@ -542,178 +542,178 @@
 	"cost": {
 		"message": "cost"
 	},
-	"notify_400_gems": { 
-		"message": "Notify when 400 gems cost less than this amount of copper" 
-	}, 
-	"copper_calculating_notify": { 
-		"message": "100 copper = 1 silver; 10000 copper = 1 gold." 
-	}, 
-	"notify_10_gold": { 
-		"message": "Notify when 10 gold cost less than this amount of gems" 
-	}, 
-	"set_zero_to_disable": { 
-		"message": "Set <code>0</code> to disable tracking" 
-	}, 
-	"cl_1_4_0_0": { 
-		"message": "<li>You can get notifications when gems or gold exchange rates are profitable for you.</li><li>Added a link to graphs for gem exchange rate. Works only if you've selected any graph tool in your settings.</li><li>Settings are not syncing between Chrome accounts and browsers anymore. Every browser can get personal settings now. But API-keys are still syncing.</li><li>Added a new option which allows you to define a default page which will appear when you open the extension.</li><li>Minor bugfixes.</li><li>Optimization improvements. Yep, I love optimization.</li>" 
-	}, 
-	"changes_saved": { 
-		"message": "Changes have been successfully saved." 
-	}, 
-	"gem_price_dropped_down": { 
-		"message": "Gem price dropped down" 
-	}, 
-	"gems_cost_now": { 
-		"message": "400 gems cost $PRICE$ now.", 
-		"placeholders": { 
-			"price": { 
-				"content": "$1" 
-			} 
-		} 
-	}, 
-	"gems_cost_your": { 
-		"message": "You've waited for $PRICE$ or lower.", 
-		"placeholders": { 
-			"price": { 
-				"content": "$1" 
-			} 
-		} 
+	"notify_400_gems": {
+		"message": "Notify when 400 gems cost less than this amount of copper"
 	},
-	"gold_price_dropped_down": { 
-		"message": "Gold price dropped down" 
-	}, 
-	"gold_cost_now": { 
-		"message": "10 gold cost $PRICE$ gems now.", 
-		"placeholders": { 
-			"price": { 
-				"content": "$1" 
-			} 
-		} 
-	}, 
-	"gold_cost_your": { 
-		"message": "You've waited for $PRICE$ gems or lower.", 
-		"placeholders": { 
-			"price": { 
-				"content": "$1" 
-			} 
-		} 
-	}, 
-	"default_page": { 
-		"message": "Default page" 
-	}, 
-	"default_page_desc": { 
-		"message": "Select a page which will appear when you open the extension" 
-	}, 
-	"default_page_desc_after": { 
-		"message": "I recommend you to select \"Changelog & News\" to see latest changes and to improve the extension's loading speed." 
+	"copper_calculating_notify": {
+		"message": "100 copper = 1 silver; 10000 copper = 1 gold."
 	},
-	"cl_1_4_1_0": { 
-		"message": "<li>Fixed a bug when the extension window blinks after you switch between tabs too often.</li><li>Fixed a bug with gem price notifications.</li><li>Removed a button from exchange rate notifications which stopped those notifications. You can stop notifications by pressing &times; button now.</li>" 
-	}, 
-	"opera_based": { 
-		"message": "Opera 15+" 
-	}, 
-	"synchronizable_storage": { 
-		"message": "Synchronizable storage" 
-	}, 
-	"windows_native_notifications": { 
+	"notify_10_gold": {
+		"message": "Notify when 10 gold cost less than this amount of gems"
+	},
+	"set_zero_to_disable": {
+		"message": "Set <code>0</code> to disable tracking"
+	},
+	"cl_1_4_0_0": {
+		"message": "<li>You can get notifications when gems or gold exchange rates are profitable for you.</li><li>Added a link to graphs for gem exchange rate. Works only if you've selected any graph tool in your settings.</li><li>Settings are not syncing between Chrome accounts and browsers anymore. Every browser can get personal settings now. But API-keys are still syncing.</li><li>Added a new option which allows you to define a default page which will appear when you open the extension.</li><li>Minor bugfixes.</li><li>Optimization improvements. Yep, I love optimization.</li>"
+	},
+	"changes_saved": {
+		"message": "Changes have been successfully saved."
+	},
+	"gem_price_dropped_down": {
+		"message": "Gem price dropped down"
+	},
+	"gems_cost_now": {
+		"message": "400 gems cost $PRICE$ now.",
+		"placeholders": {
+			"price": {
+				"content": "$1"
+			}
+		}
+	},
+	"gems_cost_your": {
+		"message": "You've waited for $PRICE$ or lower.",
+		"placeholders": {
+			"price": {
+				"content": "$1"
+			}
+		}
+	},
+	"gold_price_dropped_down": {
+		"message": "Gold price dropped down"
+	},
+	"gold_cost_now": {
+		"message": "10 gold cost $PRICE$ gems now.",
+		"placeholders": {
+			"price": {
+				"content": "$1"
+			}
+		}
+	},
+	"gold_cost_your": {
+		"message": "You've waited for $PRICE$ gems or lower.",
+		"placeholders": {
+			"price": {
+				"content": "$1"
+			}
+		}
+	},
+	"default_page": {
+		"message": "Default page"
+	},
+	"default_page_desc": {
+		"message": "Select a page which will appear when you open the extension"
+	},
+	"default_page_desc_after": {
+		"message": "I recommend you to select \"Changelog & News\" to see latest changes and to improve the extension's loading speed."
+	},
+	"cl_1_4_1_0": {
+		"message": "<li>Fixed a bug when the extension window blinks after you switch between tabs too often.</li><li>Fixed a bug with gem price notifications.</li><li>Removed a button from exchange rate notifications which stopped those notifications. You can stop notifications by pressing &times; button now.</li>"
+	},
+	"opera_based": {
+		"message": "Opera 15+"
+	},
+	"synchronizable_storage": {
+		"message": "Synchronizable storage"
+	},
+	"windows_native_notifications": {
 		"message": "Notifications via Windows 8 & 10 notification center"
-	}, 
-	"press_x_button_to_stop": { 
-		"message": "Note: you can press &times; button on a notification to stop them." 
 	},
-	"cl_1_4_1_1": { 
-		"message": "<li>Fixed a bug with gem price notifications (again).</li>" 
+	"press_x_button_to_stop": {
+		"message": "Note: you can press &times; button on a notification to stop them."
 	},
-	"cl_1_4_1_2": { 
-		"message": "<li>Updated link to Opera store page at FAQ page.</li><li>Minor fixes.</li>" 
+	"cl_1_4_1_1": {
+		"message": "<li>Fixed a bug with gem price notifications (again).</li>"
 	},
-	"cl_1_4_1_2_news": { 
-		"message": "Released version of the extension for Opera. You can get it <a href='https://addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>. The next one will be for Yandex.Browser and then for Firefox." 
+	"cl_1_4_1_2": {
+		"message": "<li>Updated link to Opera store page at FAQ page.</li><li>Minor fixes.</li>"
 	},
-	"chinese": { 
-		"message": "Chinese" 
-	}, 
-	"korean": { 
-		"message": "Korean (has issues)" 
-	}, 
-	"cl_1_5_0_0": { 
-		"message": "<li>Added 2 new languages which may be used to display item names: Korean and Chinese. Despite the fact that GW2 API officially supports Korean, it has unknown issues now.</li><li><a data-local-page='options'>Settings page</a> has been renamed to \"Options\" and was moved out of the extension. Now it is located at <a href='chrome://extensions/'>extensions page</a> (may also be accessed via right-click on extension icon) and was redesigned to use default browser style.</li><li><a data-local-page='debug'>Debug page</a> can be accessed via <a data-local-page='faq'>FAQ page</a> now.</li><li><a data-local-page='full-tab'>Full-tab mode</a> trigger added to <a data-local-page='debug'>debug page</a>. It's for debug only now. Not really sure if I will finish this feature for production.</li><li>The extension was refactored to support cross-browser features. That means all browsers will run the same extension. This should decrease number of bugs in future however this feature may be cause of some bugs you can find in this release (tell me if you find them; they will be fixed ASAP).</li><li>Added new tool — simple fee <a data-local-page='calculator'>calculator</a>.</li><li>Small UI improvements.</li>" 
-	}, 
-	"full_tab_mode": { 
-		"message": "Full-tab mode" 
-	}, 
-	"calculator": { 
-		"message": "Calculator" 
-	}, 
-	"listing_fee": { 
-		"message": "Listing fee" 
-	}, 
-	"selling_fee": { 
-		"message": "Selling fee" 
-	}, 
-	"without_fee": { 
-		"message": "Price including taxes" 
-	}, 
-	"without_fee_help": { 
-		"message": "So you get the exact gold amount you entered" 
-	}, 
-	"price": { 
-		"message": "Price" 
-	}, 
-	"count": { 
-		"message": "Count" 
+	"cl_1_4_1_2_news": {
+		"message": "Released version of the extension for Opera. You can get it <a href='https://addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>. The next one will be for Yandex.Browser and then for Firefox."
+	},
+	"chinese": {
+		"message": "Chinese"
+	},
+	"korean": {
+		"message": "Korean (has issues)"
+	},
+	"cl_1_5_0_0": {
+		"message": "<li>Added 2 new languages which may be used to display item names: Korean and Chinese. Despite the fact that GW2 API officially supports Korean, it has unknown issues now.</li><li><a data-local-page='options'>Settings page</a> has been renamed to \"Options\" and was moved out of the extension. Now it is located at <a href='chrome://extensions/'>extensions page</a> (may also be accessed via right-click on extension icon) and was redesigned to use default browser style.</li><li><a data-local-page='debug'>Debug page</a> can be accessed via <a data-local-page='faq'>FAQ page</a> now.</li><li><a data-local-page='full-tab'>Full-tab mode</a> trigger added to <a data-local-page='debug'>debug page</a>. It's for debug only now. Not really sure if I will finish this feature for production.</li><li>The extension was refactored to support cross-browser features. That means all browsers will run the same extension. This should decrease number of bugs in future however this feature may be cause of some bugs you can find in this release (tell me if you find them; they will be fixed ASAP).</li><li>Added new tool — simple fee <a data-local-page='calculator'>calculator</a>.</li><li>Small UI improvements.</li>"
+	},
+	"full_tab_mode": {
+		"message": "Full-tab mode"
+	},
+	"calculator": {
+		"message": "Calculator"
+	},
+	"listing_fee": {
+		"message": "Listing fee"
+	},
+	"selling_fee": {
+		"message": "Selling fee"
+	},
+	"without_fee": {
+		"message": "Price including taxes"
+	},
+	"without_fee_help": {
+		"message": "So you get the exact gold amount you entered"
+	},
+	"price": {
+		"message": "Price"
+	},
+	"count": {
+		"message": "Count"
 	},
 	"yandex_based": {
 		"message": "Yandex.Browser"
 	},
-	"waiting_for_webextensions": { 
-		"message": "I'm waiting until Mozilla finishes <a href='https://wiki.mozilla.org/WebExtensions'>WebExtensions</a> feature in Firefox so I'll be able to port my extension to this browser. WebExtensions feature is supported only in Firefox Nightly (version of FF for developers) for now, but not for standart FF version." 
+	"waiting_for_webextensions": {
+		"message": "I'm waiting until Mozilla finishes <a href='https://wiki.mozilla.org/WebExtensions'>WebExtensions</a> feature in Firefox so I'll be able to port my extension to this browser. WebExtensions feature is supported only in Firefox Nightly (version of FF for developers) for now, but not for standart FF version."
 	},
-	"cl_1_5_0_1": { 
-		"message": "<li>Updated link to extension for Yandex.Browser at FAQ page.</li>" 
+	"cl_1_5_0_1": {
+		"message": "<li>Updated link to extension for Yandex.Browser at FAQ page.</li>"
 	},
-	"cl_1_5_0_1_news": { 
-		"message": "Released version of the extension for Yandex.Browser. You can get it <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>." 
+	"cl_1_5_0_1_news": {
+		"message": "Released version of the extension for Yandex.Browser. You can get it <a href='https://chrome.google.com/webstore/detail/guild-wars-2-trading-post/fmfminppfcknlpekeffahpnpfahmhojk'>here</a>. Also check pros and cons of each version at <a data-local-page='faq/browsers'>supported browsers FAQ page</a>."
 	},
-	"cl_1_6_0_0": { 
-		"message": "<li>You are now able to test the volume of notifications at the <a data-local-page='options'>options page</a>.</li><li>Added \"Copy item name\" and \"Copy item chat code\" buttons.</li><li>Item names are now links which lead to GW2Wiki.</li><li>Added more information to <a data-local-page='contacts'>contacts page</a>.</li><li>Added a new button — \"Detailed info\". By pressing this one you can see item's detailed trading post information.</li><li>Fixed a bug when after switching between API keys you get a lot of notifications. Your transaction data is now deleted after switching API key. It's very hard to make the extension work with multiple API keys.</li>" 
-	}, 
-	"test": { 
-		"message": "Test" 
-	}, 
-	"buy": { 
-		"message": "Buying" 
-	}, 
-	"sell": { 
-		"message": "Selling" 
-	}, 
-	"exchange_rate": { 
-		"message": "Exchange rate" 
-	}, 
-	"copy_name": { 
-		"message": "Copy item name" 
-	}, 
-	"copy_code": { 
-		"message": "Copy item chat code" 
-	}, 
-	"detailed_info": { 
-		"message": "Detailed info" 
-	}, 
-	"orders": { 
-		"message": "orders" 
-	}, 
-	"selling_orders": { 
-		"message": "Selling orders" 
-	}, 
-	"buying_orders": { 
-		"message": "Buying orders" 
-	}, 
-	"level": { 
-		"message": "Level" 
+	"cl_1_6_0_0": {
+		"message": "<li>You are now able to test the volume of notifications at the <a data-local-page='options'>options page</a>.</li><li>Added \"Copy item name\" and \"Copy item chat code\" buttons.</li><li>Item names are now links which lead to GW2Wiki.</li><li>Added more information to <a data-local-page='contacts'>contacts page</a>.</li><li>Added a new button — \"Detailed info\". By pressing this one you can see item's detailed trading post information.</li><li>Fixed a bug when after switching between API keys you get a lot of notifications. Your transaction data is now deleted after switching API key. It's very hard to make the extension work with multiple API keys.</li>"
 	},
-	"cl_1_6_0_1": { 
-		"message": "<li>Small UI improvements.</li>" 
+	"test": {
+		"message": "Test"
+	},
+	"buy": {
+		"message": "Buying"
+	},
+	"sell": {
+		"message": "Selling"
+	},
+	"exchange_rate": {
+		"message": "Exchange rate"
+	},
+	"copy_name": {
+		"message": "Copy item name"
+	},
+	"copy_code": {
+		"message": "Copy item chat code"
+	},
+	"detailed_info": {
+		"message": "Detailed info"
+	},
+	"orders": {
+		"message": "orders"
+	},
+	"selling_orders": {
+		"message": "Selling orders"
+	},
+	"buying_orders": {
+		"message": "Buying orders"
+	},
+	"level": {
+		"message": "Level"
+	},
+	"cl_1_6_0_1": {
+		"message": "<li>Small UI improvements.</li>"
 	},
 	"months": {
 		"message": "m."
@@ -736,16 +736,22 @@
 	"sell_100_gems": {
 		"message": "100 gems sell price"
 	},
-	"selling_price": { 
-		"message": "Sell price" 
-	}, 
-	"buying_price": { 
-		"message": "Buy price" 
+	"selling_price": {
+		"message": "Sell price"
+	},
+	"buying_price": {
+		"message": "Buy price"
 	},
 	"volume": {
 		"message": "Volume"
 	},
-	"cl_1_7_0_0": { 
-		"message": "<li>Added a graph to the \"Detailed info\" modal window.</li><li>Added a graph to the <a data-local-page='currency_exchange'>currency exchange page</a>.</li>" 
+	"cl_1_7_0_0": {
+		"message": "<li>Added a graph to the \"Detailed info\" modal window.</li><li>Added a graph to the <a data-local-page='currency_exchange'>currency exchange page</a>.</li>"
+	},
+	"cl_1_7_1_0_news": { 
+		"message": "This update was heavily focused on UI improvements."
+	},
+	"cl_1_7_1_0": {
+		"message": "<li>Bootstrap, the core of design of this extension, was updated to new version, so the extension runs with native fonts for every OS now: <i>Segoe UI</i> for Windows and <i>San Francisco</i> for OS X.</li><li>Reduced the font size in the \"Detailed info\" modal window, so lines in selling and buying orders columns won't break anymore.</li><li>Item prices at all pages are not breaking lines anymore.</li><li>\"Total profit\" and \"Total costs\" blocks were redesigned a bit.</li><li>Fixed links at options page. They are blue now.</li><li>Strange tags like <code>&lt;c=@flavor&gt;</code> are not displayed in item descriptions anymore.</li>"
 	}
 }

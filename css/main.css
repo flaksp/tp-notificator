@@ -43,6 +43,7 @@ mark,
 	padding-top: .25rem;
 	padding-bottom: .25rem;
 	text-align: center;
+	color: #eceeef;
 }
 
 .c-navigation div:first-child { margin-top: .5rem; }
@@ -64,6 +65,7 @@ mark,
 	background: #999;
 	height: 3rem;
 	width: 3rem;
+    border-radius: 0.3rem;
 }
 
 .item-icon img {
@@ -88,6 +90,8 @@ mark,
 	margin: 0 3px;
 	background-size: contain;
 }
+
+.coin-copper { margin-right: 0; }
 
 /* Item rarity */
 .item-rarity.item-rarity--Junk       { color: #aaa; }
@@ -125,7 +129,7 @@ mark,
 aside::-webkit-scrollbar { display: none; }
 
 .custom-scrollbar::-webkit-scrollbar { width: 6px; }
-.custom-scrollbar::-webkit-scrollbar-thumb { 
+.custom-scrollbar::-webkit-scrollbar-thumb {
 	border-radius: 4px;
 	background-color: #373a3c;
 }
@@ -172,20 +176,20 @@ aside::-webkit-scrollbar { display: none; }
 @-webkit-keyframes sk-stretchdelay {
 	0%, 40%, 100% {
 		-webkit-transform: scaleY(0.4);
-	}  
-	
+	}
+
 	20% {
 		-webkit-transform: scaleY(1.0);
 	}
 }
 
 @keyframes sk-stretchdelay {
-	0%, 40%, 100% { 
+	0%, 40%, 100% {
 		transform: scaleY(0.4);
 		-webkit-transform: scaleY(0.4);
 	}
-	
-	20% { 
+
+	20% {
 		transform: scaleY(1.0);
 		-webkit-transform: scaleY(1.0);
 	}

@@ -69,7 +69,7 @@ $("document").ready(function() {
 					$("#permissions").empty();
 					
 					data['permissions'].forEach(function(item, i, arr) {
-						$("#permissions").append('<span class="label label-default">' + item + '</span> ');
+						$("#permissions").append('<span class="tag tag-default">' + item + '</span> ');
 					});
 				},
 				error: function(x, t, m) {					
