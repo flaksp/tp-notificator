@@ -8,14 +8,10 @@ Someone asked me to release extension on GitHub and I did so. I've never thought
 
 This extension uses [jQuery](https://jquery.com/) 2.2.4, [Bootstrap](http://getbootstrap.com/) 4.0.0 alpha 3, [Handlebars](http://handlebarsjs.com/) 4.0.5, [UAParser](https://github.com/faisalman/ua-parser-js) 0.7.10, [clipboard.js](https://github.com/zenorocha/clipboard.js) 1.5.12, [Font Awesome](http://fontawesome.io/) 4.6.3, [Balloon.css](https://github.com/kazzkiq/balloon.css) 0.3.0 and [Highstock](http://www.highcharts.com/) 4.2.6.
 
-## Latest release - 1.7.1.0 - August 24, 2016
+## Latest release - 1.7.2.0 - September 14, 2016
 
-This update was heavily focused on UI improvements.
-* Bootstrap, the core of design of this extension, was updated to new version, so the extension runs with native fonts for every OS now: *Segoe UI* for Windows and *San Francisco* for OS X.
-* Reduced the font size in the "Detailed info" modal window, so lines in selling and buying orders columns won't break anymore.
-* Item prices at all pages are not breaking lines anymore.
-* "Total profit" and "Total costs" blocks were redesigned a bit.
-* Fixed links at options page. They are blue now.
-* Strange tags like `&lt;c=@flavor&gt;` are not displayed in item descriptions anymore.
+* When you add new API keys they will be named as `your_account_name.1234 (API key name)` now, e.g. `terron.3258 (TP notificator)`. If your API key doesn't have any name it will be added as `your_account_name.1234`. See issue https://github.com/terron-kun/tp-notificator/issues/3 for details.
+* Added a new menu button that allows you to switch your API keys easily and fast.
+* Added some information about donations to contacts page.
 
 Check out previous releases at [releases](https://github.com/terron-kun/tp-notificator/releases) page.

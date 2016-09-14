@@ -1,4 +1,5 @@
-﻿{
+﻿
+{
 	"locale": {
 		"message": "en"
 	},
@@ -198,9 +199,6 @@
 	},
 	"tradingpost_required": {
 		"message": "Your API key must have \"tradingpost\" permission."
-	},
-	"contacts_my_coordinates": {
-		"message": "My coordinates (russian and english):"
 	},
 	"contacts_ingame": {
 		"message": "Ingame"
@@ -748,10 +746,28 @@
 	"cl_1_7_0_0": {
 		"message": "<li>Added a graph to the \"Detailed info\" modal window.</li><li>Added a graph to the <a data-local-page='currency_exchange'>currency exchange page</a>.</li>"
 	},
-	"cl_1_7_1_0_news": { 
+	"cl_1_7_1_0_news": {
 		"message": "This update was heavily focused on UI improvements."
 	},
 	"cl_1_7_1_0": {
 		"message": "<li>Bootstrap, the core of design of this extension, was updated to new version, so the extension runs with native fonts for every OS now: <i>Segoe UI</i> for Windows and <i>San Francisco</i> for OS X.</li><li>Reduced the font size in the \"Detailed info\" modal window, so lines in selling and buying orders columns won't break anymore.</li><li>Item prices at all pages are not breaking lines anymore.</li><li>\"Total profit\" and \"Total costs\" blocks were redesigned a bit.</li><li>Fixed links at options page. They are blue now.</li><li>Strange tags like <code>&lt;c=@flavor&gt;</code> are not displayed in item descriptions anymore.</li>"
+	},
+	"contacts_my_coordinates": {
+		"message": "My coordinates are given below. But I don't play the game anymore and I rarely log in Skype, so the best ways to contact me are VK and Telegram. I speak only russian and english."
+	},
+	"cl_1_7_2_0": {
+		"message": "<li>When you add new API keys they will be named as <code>your_account_name.1234 (API key name)</code> now, e.g. <code>terron.3258 (TP notificator)</code>. If your API key doesn't have any name it will be added as <code>your_account_name.1234</code>. See issue <a href='https://github.com/terron-kun/tp-notificator/issues/3'>#3</a> for details.</li><li>Added a new menu button that allows you to switch your API keys easily and fast.</li><li>Added some information about donations to <a data-local-page='contacts'>contacts page</a>.</li>"
+	},
+	"switch_api_key": {
+		"message": "Switch API keys"
+	},
+	"switch_api_key_notice": {
+		"message": "Please do not switch API keys via this modal if you have opened extension options in any of your browser tabs. This may cause unpredictable consequences."
+	},
+	"donate": {
+		"message": "Donate"
+	},
+	"donate_details": {
+		"message": "If you are rich enough you may send us some penny to make us a bit happier (because we are poor as fuck)."
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Guild Wars 2™ Trading Post Notificator",
-	"version": "1.7.1.0",
+	"version": "1.7.2.0",
 	"author": "terron",
 	"homepage_url": "https://github.com/terron-kun/tp-notificator",
 	"description": "__MSG_app_description__",
@@ -9,7 +9,7 @@
 	"default_locale": "en",
 	"short_name": "TP Notificator",
 	"offline_enabled": false,
-	
+
 	"permissions": [
 		"notifications",
 		"storage",
@@ -17,7 +17,7 @@
 		"https://api.guildwars2.com/",
 		"https://render.guildwars2.com/"
 	],
-	
+
 	"icons": {
 		"16": "/img/logo-16.png",
 		"32": "/img/logo-32.png",
@@ -28,7 +28,7 @@
 		"256": "/img/logo-256.png",
 		"359": "/img/logo-359.png"
 	},
-	
+
 	"browser_action": {
 		"default_icon": {
 			"16": "/img/logo-16.png",
@@ -43,12 +43,12 @@
 		"default_title": "TP Notificator",
 		"default_popup": "/popup.html"
 	},
-	
+
 	"options_ui": {
 		"page": "/options.html",
 		"chrome_style": true
 	},
-	
+
 	"background": {
 		"scripts": [
 			"/js/error-handler.js",

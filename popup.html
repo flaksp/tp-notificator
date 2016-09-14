@@ -1,68 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-		<meta name="format-detection" content="telephone=no">
-		
-		<link rel="stylesheet" href="/css/libs/bootstrap.css" >
-		<link rel="stylesheet" href="/css/libs/font-awesome.css">
-		<link rel="stylesheet" href="/css/libs/balloon.css">
-		<link rel="stylesheet" href="/css/main.css">
-		<link rel="stylesheet" href="/css/helpers.css">
-	</head>
-	<body>
-		<div id="content"></div>
 
-		<script id="main" type="text/x-handlebars-template">
-			<aside class="col-xs-1 p-x-0 text-xs-center bg-inverse">
-				<div class="h3 line-height-default m-b-0 c-navigation">
-					<div data-local-page="buying" data-balloon="{{loc 'buying_list'}}" data-balloon-pos="right">
-						<span class="fa fa-sign-in"></span>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+	<meta name="format-detection" content="telephone=no">
+
+	<link rel="stylesheet" href="/css/libs/bootstrap.css">
+	<link rel="stylesheet" href="/css/libs/font-awesome.css">
+	<link rel="stylesheet" href="/css/libs/balloon.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/helpers.css">
+</head>
+
+<body>
+	<div id="content"></div>
+
+	<script id="main" type="text/x-handlebars-template">
+		<aside class="col-xs-1 p-x-0 text-xs-center bg-inverse">
+			<div class="h3 line-height-default m-b-0 c-navigation">
+				<div data-local-page="buying" data-balloon="{{loc 'buying_list'}}" data-balloon-pos="right">
+					<span class="fa fa-sign-in"></span>
+				</div>
+				<div data-local-page="selling" data-balloon="{{loc 'selling_list'}}" data-balloon-pos="right">
+					<span class="fa fa-sign-out"></span>
+				</div>
+				<div data-local-page="bought" data-balloon="{{loc 'buying_history'}}" data-balloon-pos="right">
+					<span class="fa fa-shopping-cart"></span>
+				</div>
+				<div data-local-page="sold" data-balloon="{{loc 'selling_history'}}" data-balloon-pos="right">
+					<span class="fa fa-eur"></span>
+				</div>
+				<div data-local-page="currency_exchange" data-balloon="{{loc 'currency_exchange'}}" data-balloon-pos="right">
+					<span class="fa fa-diamond"></span>
+				</div>
+				<div data-local-page="calculator" data-balloon="{{loc 'calculator'}}" data-balloon-pos="right">
+					<span class="fa fa-calculator"></span>
+				</div>
+				<div data-local-page="faq" data-balloon="{{loc 'faq'}}" data-balloon-pos="right">
+					<span class="fa fa-info-circle"></span>
+				</div>
+				<div data-local-page="contacts" data-balloon="{{loc 'contacts'}}" data-balloon-pos="right">
+					<span class="fa fa-envelope"></span>
+				</div>
+				<div data-local-page="changelog" data-balloon="{{loc 'changelog'}}" data-balloon-pos="right">
+					<span class="fa fa-newspaper-o"></span>
+				</div>
+				<!--<div class="text-warning" data-local-page="full-tab" data-balloon="{{loc 'full_tab_mode'}}" data-balloon-pos="right"><span class="fa fa-arrows-alt"></span></div>-->
+				<div data-balloon="{{loc 'switch_api_key'}}" data-balloon-pos="right" data-toggle="modal" data-target="#switch_api_keys_modal">
+					<span class="fa fa-refresh"></span>
+				</div>
+				<div class="text-warning" data-local-page="options" data-balloon="{{loc 'options'}}" data-balloon-pos="right">
+					<span class="fa fa-cogs"></span>
+				</div>
+			</div>
+		</aside>
+		<main class="offset-xs-1 col-xs-11 p-y-1 custom-scrollbar">
+		</main>
+
+		<div class="modal fade" id="switch_api_keys_modal" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title">{{loc 'switch_api_key'}}</h4>
 					</div>
-					<div data-local-page="selling" data-balloon="{{loc 'selling_list'}}" data-balloon-pos="right">
-						<span class="fa fa-sign-out"></span>
-					</div>
-					<div data-local-page="bought" data-balloon="{{loc 'buying_history'}}" data-balloon-pos="right">
-						<span class="fa fa-shopping-cart"></span>
-					</div>
-					<div data-local-page="sold" data-balloon="{{loc 'selling_history'}}" data-balloon-pos="right">
-						<span class="fa fa-eur"></span>
-					</div>
-					<div data-local-page="currency_exchange" data-balloon="{{loc 'currency_exchange'}}" data-balloon-pos="right">
-						<span class="fa fa-diamond"></span>
-					</div>
-					<div data-local-page="calculator" data-balloon="{{loc 'calculator'}}" data-balloon-pos="right">
-						<span class="fa fa-calculator"></span>
-					</div>
-					<div data-local-page="faq" data-balloon="{{loc 'faq'}}" data-balloon-pos="right">
-						<span class="fa fa-info-circle"></span>
-					</div>
-					<div data-local-page="contacts" data-balloon="{{loc 'contacts'}}" data-balloon-pos="right">
-						<span class="fa fa-envelope"></span>
-					</div>
-					<div data-local-page="changelog" data-balloon="{{loc 'changelog'}}" data-balloon-pos="right">
-						<span class="fa fa-newspaper-o"></span>
-					</div>
-					<!--<div class="text-warning" data-local-page="full-tab" data-balloon="{{loc 'full_tab_mode'}}" data-balloon-pos="right"><span class="fa fa-arrows-alt"></span></div>-->
-					<div class="text-warning" data-local-page="options" data-balloon="{{loc 'options'}}" data-balloon-pos="right">
-						<span class="fa fa-cogs"></span>
+					<div class="modal-body">
+						<form id="current_api_key">
+							<fieldset>
+								<label for="api_key_select">{{loc 'select_api_key'}}</label>
+
+								<div class="form-group">
+									<select id="api_key_select" class="form-control" required>
+										<option disabled>---</option>
+									</select>
+								</div>
+
+								<div class="alert alert-warning m-b-1">{{loc 'switch_api_key_notice'}}</div>
+
+								<button id="use_selected" class="btn btn-primary" type="submit">{{loc 'use_selected'}}</button>
+							</fieldset>
+
+							<div class="js-notifications"></div>
+						</form>
 					</div>
 				</div>
-			</aside>
-			<main class="offset-xs-1 col-xs-11 p-y-1 custom-scrollbar">
-			</main>
-		</script>
-		
-		<script defer src="/js/error-handler.js"></script>
-		<script defer src="/js/libs/jquery.js"></script>
-		<script defer src="/js/libs/bootstrap.js"></script>
-		<script defer src="/js/libs/handlebars.js"></script>
-		<script defer src="/js/libs/ua-parser.js"></script>
-		<script defer src="/js/libs/clipboard.js"></script>
-		<script defer src="/js/libs/highstock.js"></script>
-		<script defer src="/js/cross-browser-features.js"></script>
-		<script defer src="/js/functions.js"></script>
-		<script defer src="/js/main.js"></script>
-	</body>
+			</div>
+		</div>
+	</script>
+
+	<script defer src="/js/error-handler.js"></script>
+	<script defer src="/js/libs/jquery.js"></script>
+	<script defer src="/js/libs/bootstrap.js"></script>
+	<script defer src="/js/libs/handlebars.js"></script>
+	<script defer src="/js/libs/ua-parser.js"></script>
+	<script defer src="/js/libs/clipboard.js"></script>
+	<script defer src="/js/libs/highstock.js"></script>
+	<script defer src="/js/cross-browser-features.js"></script>
+	<script defer src="/js/functions.js"></script>
+	<script defer src="/js/main.js"></script>
+</body>
+
 </html>
