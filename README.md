@@ -1,5 +1,7 @@
 # Guild Wars 2 Trading Post Notificator
 
+> **Note:** There will be no new features in this project because its code is horrible and unsupportable. Only bugs will be fixed. When I developed this I didn't even know about NPM! Maybe in the distant future I'll create a brand new extension based on modern technologies and crystal clear code.
+
 You can get it at extension stores now:
 * [Chrome Store](https://chrome.google.com/webstore/detail/fmfminppfcknlpekeffahpnpfahmhojk) &mdash; Google Chrome, Google Chrome Canary, Chromium and Yandex.Browser
 * [Opera Store](https://addons.opera.com/extensions/details/guild-wars-2tm-trading-post-notificator/) &mdash; Opera 15+
