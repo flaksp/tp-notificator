@@ -78,10 +78,10 @@ $("document").ready(function() {
 							'<div class="row">' +
 							'<div class="col-xs-5 js-item-name text-truncate">' + item['item_id'] + '</div>' +
 							'<div class="col-xs-2 text-xs-right">' +
-							'<span class="cursor-pointer js-copy-code js-clipboard" data-balloon="' + chrome.i18n.getMessage("copy_code") + '" data-balloon-pos="up" hidden>' +
+							'<span class="cursor-pointer js-copy-code js-clipboard" title="' + chrome.i18n.getMessage("copy_code") + '" hidden>' +
 							'<span class="fa fa-code"></span>' +
 							'</span>&nbsp;&nbsp;' +
-							'<span class="cursor-pointer js-copy-name js-clipboard" data-balloon="' + chrome.i18n.getMessage("copy_name") + '" data-balloon-pos="up" hidden>' +
+							'<span class="cursor-pointer js-copy-name js-clipboard" title="' + chrome.i18n.getMessage("copy_name") + '" hidden>' +
 							'<span class="fa fa-files-o"></span>' +
 							'</span>' +
 							'</div>' +
@@ -90,7 +90,7 @@ $("document").ready(function() {
 							time_ago(Date.parse(item['created'])) + ' ' + chrome.i18n.getMessage("ago") +
 							'</div>' +
 							'<div class="col-xs-1 text-xs-center">' +
-							'<div class="cursor-pointer js-track-this-item" data-balloon="' + chrome.i18n.getMessage("notify_when_bought") + '" data-balloon-pos="left">' +
+							'<div class="cursor-pointer js-track-this-item" title="' + chrome.i18n.getMessage("notify_when_bought") + '">' +
 							'<span class="fa fa-eye"></span>' +
 							'</div>' +
 							'</div>' +
@@ -99,18 +99,18 @@ $("document").ready(function() {
 							'<div class="col-xs-2">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>' +
 							'<div class="col-xs-4">' + format_coins(item['price']) + '</div>' +
 							'<div class="col-xs-1 text-xs-right">' +
-							'<span class="cursor-pointer js-detailed-info" data-balloon="' + chrome.i18n.getMessage("detailed_info") + '" data-balloon-pos="down" hidden>' +
+							'<span class="cursor-pointer js-detailed-info" title="' + chrome.i18n.getMessage("detailed_info") + '" hidden>' +
 							'<span class="fa fa-info-circle"></span>' +
 							'</span>' +
 							'</div>' +
 							'<div class="col-xs-4">' +
-							'<span data-balloon="' + chrome.i18n.getMessage("price_difference_buy") + '" data-balloon-pos="down">' +
+							'<span title="' + chrome.i18n.getMessage("price_difference_buy") + '">' +
 							'<span class="fa fa-sort-amount-asc"></span> ' +
 							'<span class="js-price-range">' + chrome.i18n.getMessage("loading") + '</span>' +
 							'</span>' +
 							'</div>' +
 							'<div class="col-xs-1 text-xs-center">' +
-							'<a class="text-color-black js-graph-tool" data-balloon="' + chrome.i18n.getMessage("open_graph_tool") + '" data-balloon-pos="left">' +
+							'<a class="text-color-black js-graph-tool" title="' + chrome.i18n.getMessage("open_graph_tool") + '">' +
 							'<span class="fa fa-area-chart"></span>' +
 							'</a>' +
 							'</div>' +

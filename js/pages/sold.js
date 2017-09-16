@@ -76,10 +76,10 @@ $("document").ready(function() {
 							'<div class="row">' +
 							'<div class="col-xs-5 js-item-name text-truncate">' + item['item_id'] + '</div>' +
 							'<div class="col-xs-2 text-xs-right">' +
-							'<span class="cursor-pointer js-copy-code js-clipboard" data-balloon="' + chrome.i18n.getMessage("copy_code") + '" data-balloon-pos="up" hidden>' +
+							'<span class="cursor-pointer js-copy-code js-clipboard" title="' + chrome.i18n.getMessage("copy_code") + '" hidden>' +
 							'<span class="fa fa-code"></span>' +
 							'</span>&nbsp;&nbsp;' +
-							'<span class="cursor-pointer js-copy-name js-clipboard" data-balloon="' + chrome.i18n.getMessage("copy_name") + '" data-balloon-pos="up" hidden>' +
+							'<span class="cursor-pointer js-copy-name js-clipboard" title="' + chrome.i18n.getMessage("copy_name") + '" hidden>' +
 							'<span class="fa fa-files-o"></span>' +
 							'</span>' +
 							'</div>' +
@@ -93,7 +93,7 @@ $("document").ready(function() {
 							'<div class="col-xs-2">' + item['quantity'] + ' ' + chrome.i18n.getMessage("items") + '</div>' +
 							'<div class="col-xs-4">' + format_coins(item['price']) + '</div>' +
 							'<div class="col-xs-1 text-xs-right">' +
-							'<span class="cursor-pointer js-detailed-info" data-balloon="' + chrome.i18n.getMessage("detailed_info") + '" data-balloon-pos="down" hidden>' +
+							'<span class="cursor-pointer js-detailed-info" title="' + chrome.i18n.getMessage("detailed_info") + '" hidden>' +
 							'<span class="fa fa-info-circle"></span>' +
 							'</span>' +
 							'</div>' +

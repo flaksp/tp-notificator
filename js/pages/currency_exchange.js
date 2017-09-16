@@ -4,7 +4,7 @@ $("document").ready(function() {
 	
 	chrome.storage.local.get(function(local_storage) {
 		if (local_storage['graph_tool'] > 0) {
-			$("h1").append('<a class="pull-xs-right" href="' + create_graph_gem_url(local_storage['graph_tool']) + '" data-balloon="' + chrome.i18n.getMessage("open_graph_tool") + '" data-balloon-pos="left"><span class="fa fa-area-chart"></span></a>');
+			$("h1").append('<a class="pull-xs-right" href="' + create_graph_gem_url(local_storage['graph_tool']) + '" title="' + chrome.i18n.getMessage("open_graph_tool") + '"><span class="fa fa-area-chart"></span></a>');
 		}
 	});
 	
